@@ -159,3 +159,39 @@ body {
 }
 .btn-vino:hover{ background:#5a052b; color:#fff; }
 
+/* ===== VALUE SECTION ===== */
+.value-section { background-color: #fff; color: #333; }
+.value-section h2 { font-size: clamp(26px, 4vw, 38px); }
+.value-section h4 { font-size: clamp(18px, 2.2vw, 22px); font-weight: 600; }
+.icon-vino { color: var(--vino); }
+.value-section p { font-size: 16px; }
+.value-section img { object-fit: cover; height: 100%; border-radius: 12px; }
+@media (max-width: 991px){ .value-section .row img { height: auto; } }
+
+/* ===== CTA MINI ===== */
+.cta-mini { background: #f8f9fb; }
+.cta-mini h3 { color: var(--vino); font-size: clamp(22px, 3.5vw, 30px); }
+
+/* Helpers */
+.text-vino{ color:#770737 !important; }
+.btn-vino{ background:#770737; color:#fff; border:0; padding:12px 24px; }
+.btn-vino:hover{ background:#5e062d; color:#fff; }
+.btn-outline-vino{ border:2px solid #770737; color:#770737; }
+.btn-outline-vino:hover{ background:#770737; color:#fff; }
+
+/* Value / Ambassador / Partners */
+.value-section{ background:#fff; }
+.value-eyebrow{ font-weight:700; letter-spacing:.4px; text-transform:uppercase; font-size:.9rem; }
+.value-heading{ font-size:clamp(22px,3vw,34px); font-weight:800; color:#222; }
+.value-card, .amb-card, .partner-card{
+  background:#fff; border-radius:16px; transition:transform .25s, box-shadow .25s;
+}
+.value-card:hover, .amb-card:hover, .partner-card:hover{
+  transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.08);
+}
+.value-icon{ font-size:clamp(36px,5vw,56px); line-height:1; }
+
+/* Small screens polish */
+@media (max-width: 575px){
+  .value-icon{ font-size:42px; }
+}
