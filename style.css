@@ -1,3 +1,85 @@
+:root{
+  --vino:#770737;
+  --vino-70:#770737b3;
+  --vino-40:#77073766;
+}
+body{font-family:'Segoe UI', Roboto, Arial, sans-serif; scroll-behavior:smooth}
+.bg-vino{ background-color:var(--vino)!important; }
+.text-vino{ color:var(--vino)!important; }
+
+/* Brand logo visibility */
+.brand-logo{ height:40px; filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 8px rgba(255,255,255,.35)); }
+.brand-text{ letter-spacing:.2px; color:#fff }
+
+h1,h2,h5{ font-weight:700 }
+.card{ border:none; border-radius:12px }
+
+.btn-vino{ background-color:var(--vino); color:#fff; border:none; padding:12px 24px; border-radius:8px; transition:all .3s }
+.btn-vino:hover{ background-color:#5a052b; color:#fff }
+.btn-ss{ background:#fff; color:var(--vino); border:2px solid #fff; font-weight:700 }
+.btn-ss:hover{ background:#f6f6f6; color:var(--vino) }
+
+/* ===== HERO ===== */
+.hero{
+  min-height:82vh; position:relative; display:flex; align-items:center; justify-content:center;
+  text-align:center; color:#fff;
+  background:
+    linear-gradient(90deg, rgba(27,0,32,.65) 0%, rgba(119,7,55,.45) 55%, rgba(0,0,0,.15) 100%),
+    url('img/hero-bg.jpeg') center/cover no-repeat;
+}
+.hero>.container{ max-width:960px; transform: translateY(-56px) }
+.hero h1{
+  font-size:clamp(46px,6.5vw,78px); font-weight:900; letter-spacing:.3px;
+  text-shadow:0 4px 18px rgba(0,0,0,.35); margin-bottom:.35rem;
+}
+.hero .lead{ font-size:clamp(18px,2.4vw,28px); font-weight:700; opacity:.98; text-shadow:0 3px 14px rgba(0,0,0,.35) }
+.cta-row{ display:flex; gap:16px; justify-content:center; align-items:center; margin-top:20px; flex-wrap:wrap }
+#countdown{
+  font-size:clamp(18px,2.6vw,32px); padding:10px 18px; border-radius:14px;
+  background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.4); color:#fff; font-weight:800;
+  backdrop-filter: blur(4px); box-shadow:0 4px 14px rgba(0,0,0,.25)
+}
+.btn-early{
+  border-radius:50px; padding:14px 28px; font-size:clamp(1rem,2.4vw,1.25rem); font-weight:800; border:0;
+  background:#fff; color:var(--vino); box-shadow:0 8px 28px rgba(119,7,55,.45); transition:all .25s ease
+}
+.btn-early:hover{ background:var(--vino); color:#fff; box-shadow:0 12px 34px rgba(119,7,55,.6); transform: translateY(-2px) }
+@media (max-width:991px){ .hero>.container{ transform: translateY(-36px) } }
+@media (max-width:575px){ .hero>.container{ transform: translateY(-22px) } .btn-early{ padding:12px 22px } }
+
+/* ===== VALUE ===== */
+.value-section{ background: linear-gradient(180deg, var(--vino) 0%, #5a052b 100%) }
+.value-block{
+  border:1px solid rgba(255,255,255,.35); border-radius:16px; padding:2rem;
+  background: rgba(255,255,255,.06);
+  box-shadow: 0 8px 34px rgba(0,0,0,.25);
+}
+
+/* ===== Ambassadors ===== */
+.ambassadors{ background: linear-gradient(180deg, #5a052b 0%, var(--vino) 100%) }
+
+/* Offcanvas */
+.offcanvas-vino{
+  background: radial-gradient(1200px 600px at 30% 10%, rgba(255,255,255,.06), transparent 60%),
+              linear-gradient(180deg, #5c0630 0%, #8c0b49 100%);
+  color:#fff; width:480px; max-width:100%;
+}
+.offcanvas-vino .form-label{ color:#fff; font-weight:600 }
+.offcanvas-vino .form-control, .offcanvas-vino .form-select{
+  background: rgba(255,255,255,.95); border:0; border-radius:12px; padding:.75rem 1rem
+}
+.offcanvas-vino .btn-close{ filter: invert(1); opacity:.9 }
+
+/* Navbar */
+.navbar.bg-vino{ background: linear-gradient(180deg, rgba(119,7,55,1) 0%, rgba(119,7,55,.92) 100%) }
+.navbar .nav-link{ color:#fff!important; font-weight:600; letter-spacing:.2px; padding:.6rem .95rem; opacity:.95 }
+.navbar .nav-link:hover{ color:#ffd9ea!important; opacity:1 }
+.navbar .nav-signup{
+  border-radius:999px; background:#fff; color:var(--vino)!important; padding:.55rem 1rem!important; font-weight:800;
+  box-shadow:0 6px 18px rgba(255,255,255,.15), 0 10px 24px rgba(0,0,0,.15); border:2px solid rgba(255,255,255,.85);
+}
+.navbar .nav-signup:hover{ background:var(--vino); color:#fff!important; border-color:#ffd9ea; box-shadow:0 10px 28px rgba(119,7,55,.45) }
+
 :root {
   --vino: #770737;
   --Whithe:#ffffff;
@@ -38,14 +120,6 @@ body {
 
 .social-floating a:hover {
   background: #5a052b;
-}
-
-.hero {
-  min-height: 80vh;
-  background: 
-    linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)),
-    url('https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=1600') center/cover no-repeat;
-  color: #fff;
 }
 
 
@@ -172,26 +246,7 @@ body {
 .cta-mini { background: #f8f9fb; }
 .cta-mini h3 { color: var(--vino); font-size: clamp(22px, 3.5vw, 30px); }
 
-/* Helpers */
-.text-vino{ color:#770737 !important; }
-.btn-vino{ background:#770737; color:#fff; border:0; padding:12px 24px; }
-.btn-vino:hover{ background:#5e062d; color:#fff; }
-.btn-outline-vino{ border:2px solid #770737; color:#770737; }
-.btn-outline-vino:hover{ background:#770737; color:#fff; }
-
-/* Value / Ambassador / Partners */
-.value-section{ background:#fff; }
-.value-eyebrow{ font-weight:700; letter-spacing:.4px; text-transform:uppercase; font-size:.9rem; }
-.value-heading{ font-size:clamp(22px,3vw,34px); font-weight:800; color:#222; }
-.value-card, .amb-card, .partner-card{
-  background:#fff; border-radius:16px; transition:transform .25s, box-shadow .25s;
-}
-.value-card:hover, .amb-card:hover, .partner-card:hover{
-  transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.08);
-}
-.value-icon{ font-size:clamp(36px,5vw,56px); line-height:1; }
-
-/* Small screens polish */
-@media (max-width: 575px){
-  .value-icon{ font-size:42px; }
-}
+/* ===== Sections below hero ===== */
+#value h2,#ambassadors h2,#partners h2{letter-spacing:.2px}
+#value img,#ambassadors img,#partners img{object-fit:cover;min-height:180px}
+#value .bi,#ambassadors .bi,#partners .bi{vertical-align:middle}
