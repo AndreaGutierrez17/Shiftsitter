@@ -104,3 +104,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 })();
+
+
+// === Cierre automático del menú hamburguesa al hacer clic en un enlace ===
+document.addEventListener('DOMContentLoaded', function () {
+  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+  const navbarCollapse = document.querySelector('.navbar-collapse');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+        toggle: false
+      });
+      bsCollapse.hide();
+    });
+  });
+});
+
