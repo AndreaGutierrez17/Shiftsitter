@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ShiftSitter — Coming Soon</title>
-  <link rel="icon" type="image/png" href="img/new-logo-shiftsitter.png" />
+  <link rel="icon" type="image/png" href="img/logo-shiftSitter.png" />
 
-  <!-- Bootstrap Core & Icons -->
+  <!-- Bootstrap & Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
@@ -18,13 +18,21 @@
 </head>
 <body>
 
-<!-- Redes Sociales Flotantes -->
-  <div class="social-floating">
-    <a href="https://instagram.com" target="_blank" class="ig"><i class="bi bi-instagram"></i></a>
-    <a href="https://facebook.com" target="_blank" class="fb"><i class="bi bi-facebook"></i></a>
-    <a href="https://linkedin.com" target="_blank" class="in"><i class="bi bi-linkedin"></i></a>
-  </div>
-
+<!-- ===== REDES SOCIALES FLOTANTES ===== -->
+<div class="social-float">
+  <a href="https://instagram.com/ShiftSitter" target="_blank" aria-label="Instagram">
+    <i class="bi bi-instagram"></i>
+  </a>
+  <a href="https://twitter.com/ShiftSitter" target="_blank" aria-label="Twitter">
+    <i class="bi bi-twitter-x"></i>
+  </a>
+  <a href="https://www.facebook.com/share/16U7UPmUw8/" target="_blank" aria-label="Facebook">
+    <i class="bi bi-facebook"></i>
+  </a>
+  <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+    <i class="bi bi-linkedin"></i>
+  </a>
+</div>
 
   <!-- ===== NAVBAR ===== -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-vino sticky-top shadow-sm">
@@ -37,7 +45,12 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav"> <li class="nav-item">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#value">Why</a></li>
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ambassadors">Ambassadors</a></li>
+          <li class="nav-item"><a class="nav-link" href="#partners">Employers</a></li>
+          <li class="nav-item">
             <a class="nav-link nav-signup ms-lg-2" data-bs-toggle="offcanvas" href="#signupDrawer" role="button" aria-controls="signupDrawer">
               Sign Up
             </a>
@@ -50,25 +63,27 @@
   <!-- ===== HERO ===== -->
   <header class="hero d-flex align-items-center text-center text-white">
     <div class="container animate__animated animate__fadeIn">
-      <h1 class="animate__animated animate__fadeInDown">ShiftSitter</h1>
-      <p class="lead animate__animated animate__fadeInUp">Your reciprocal childcare platform is coming soon!</p>
+      <h1 class="animate__animated animate__fadeInDown mb-2">ShiftSitter</h1>
+      <p class="lead animate__animated animate__fadeInUp mb-3">
+        Smart, verified childcare swaps for shift-working families.
+      </p>
+      <p class="sublead">
+        Built by caregivers, for caregivers — using real-time schedule sync, background-checked matching, and instant chat support.
+      </p>
 
-      <!-- Countdown + CTA (COUNTDOWN KEPT; ISOLATED IN JS) -->
+      <!-- Countdown + CTA -->
       <div class="cta-row">
         <span id="countdown" aria-live="polite"></span>
-        <a class="btn btn-early"
-           data-bs-toggle="offcanvas"
-           href="#signupDrawer"
-           role="button"
-           aria-controls="signupDrawer">
-           Become a Founding Member Family
+        <a class="btn btn-early" data-bs-toggle="offcanvas" href="#signupDrawer" role="button" aria-controls="signupDrawer">
+          Become a Founding Member Family
         </a>
       </div>
-      <p class="micro mt-2">Early sign-ups get <strong>6 months free</strong> + <strong>lifetime access</strong> to premium features.</p>
+      <p class="micro mt-2">Early sign-ups get <strong>6 months free</strong>.</p>
+      
     </div>
   </header>
 
-  <!-- ===== VALUE (Bold copy per John) ===== -->
+  <!-- ===== CORE VALUE ===== -->
   <section id="value" class="py-5 value-section text-center text-white">
     <div class="container">
       <h2 class="mb-4" data-aos="fade-up"><i class="bi bi-shield-check me-2"></i>Core Value</h2>
@@ -76,126 +91,124 @@
         <div class="col-lg-10">
           <div class="value-block" data-aos="zoom-in">
             <p class="display-6 fw-bold mb-3">No more costly, unreliable childcare.</p>
-            <p class="h4 fw-semibold">Instant, no-cost reciprocal matching with local families.</p>
+            <p class="h4 fw-semibold">
+              ShiftSitter’s multi-facet pairing algorithm matches verified local families by schedule, distance, and trust preferences — safely and instantly.
+            </p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="value" class="py-5">
-  <div class="container">
-    <div class="row align-items-center g-4">
-      <div class="col-lg-6">
-
-        <div class="d-flex align-items-start mb-3">
-          <i class="bi bi-shield-check fs-1 text-vino me-3"></i>
-          <div>
-            <h5 class="mb-1">Trusted &amp; Safe</h5>
-            <p class="mb-0">Verified profiles and transparent matching.</p>
+  <!-- ===== FEATURES ===== -->
+  <section id="features" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4" data-aos="fade-up">Features</h2>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="zoom-in">
+          <div class="card p-4 h-100 shadow-sm">
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-patch-check-fill fs-2 text-vino me-2"></i>
+              <h5 class="mb-0">Trusted & Safe</h5>
+            </div>
+            <p class="mb-0">
+              Every user is ID-verified and background-checked with built-in geo-fencing and roaming safeguards.
+            </p>
           </div>
         </div>
-
-        <div class="d-flex align-items-start mb-3">
-          <i class="bi bi-people fs-1 text-vino me-3"></i>
-          <div>
-            <h5 class="mb-1">Local Reciprocity</h5>
-            <p class="mb-0">Parents helping parents—no fees between families.</p>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="50">
+          <div class="card p-4 h-100 shadow-sm">
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-people-fill fs-2 text-vino me-2"></i>
+              <h5 class="mb-0">Local Reciprocity</h5>
+            </div>
+            <p class="mb-0">
+              Parents helping parents, matched by schedule and trust preferences. No sitters. No fees.
+            </p>
           </div>
         </div>
-
-        <div class="d-flex align-items-start">
-          <i class="bi bi-geo-alt fs-1 text-vino me-3"></i>
-          <div>
-            <h5 class="mb-1">Nearby Matches</h5>
-            <p class="mb-0">Find families close to home and work.</p>
-          </div>
-        </div>
-        
-
-        <a class="btn btn-light text-vino fw-bold mt-4"
-           data-bs-toggle="offcanvas" href="#signupDrawer" role="button"
-           aria-controls="signupDrawer">
-        </a>
-      </div>
-
-      <div class="col-lg-6">
-        <div class="row g-3">
-          <div class="col-6">
-            <img class="img-fluid rounded-3 shadow-sm"
-                 src="img/shiftsitter.png"
-                 alt="Parent helping child with homework">
-          </div>
-          <div class="col-6">
-            <img class="img-fluid rounded-3 shadow-sm"
-               src="img/img1-shiftsitter.png"
-                 alt="Nurse parent at shift change with child at home">
-          </div>
-          <div class="col-6">
-            <img class="img-fluid rounded-3 shadow-sm"
-                 src="img/img-shiftsitter.png"
-                 alt="Kids in classroom with caregiver">
-          </div>
-          <div class="col-6">
-            <img class="img-fluid rounded-3 shadow-sm"
-                 src="img/img2-shiftsitter.png"
-                 alt="Parents chatting in kitchen with kids">
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+          <div class="card p-4 h-100 shadow-sm">
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-geo-alt-fill fs-2 text-vino me-2"></i>
+              <h5 class="mb-0">Smart Matching Nearby</h5>
+            </div>
+            <p class="mb-0">
+              Our pairing algorithm syncs with your shift schedule to find families close to home, work, or hospital.
+            </p>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-  
-
-
+  </section>
 
   <!-- ===== AMBASSADORS ===== -->
   <section id="ambassadors" class="py-5 text-center text-white ambassadors">
     <div class="container">
       <h2 class="mb-3" data-aos="fade-up"><i class="bi bi-megaphone me-2"></i>Founding Ambassadors</h2>
-      <p class="mb-4" data-aos="fade-up" data-aos-delay="100">Want to earn by helping launch the ShiftSitter community in your area? Apply to be a <strong>Founding Ambassador</strong> and get your personal referral link to help local parents in your network.</p>
-      <a class="btn btn-outline-light" data-bs-toggle="offcanvas" href="#signupDrawer" role="button" aria-controls="signupDrawer">Apply as Ambassador</a>
+      <p class="mb-4" data-aos="fade-up" data-aos-delay="100">
+        Help launch a childcare movement that keeps families in the workforce.
+        Become a Founding Ambassador and help bring ShiftSitter to your community.
+        Earn rewards for every verified family you introduce.
+      </p>
+      <a class="btn btn-outline-light" data-bs-toggle="offcanvas" href="#signupDrawer" role="button" aria-controls="signupDrawer" data-role="ambassador">
+        Apply as Ambassador
+      </a>
       <div class="mt-4">
-        <img src="img/ambassadors-placeholder.jpeg" alt="Community of parents at a park" class="img-fluid rounded shadow">
+        <img src="img/img-shiftsitter.png" alt="Community parents supporting each other" class="img-fluid rounded shadow">
       </div>
     </div>
   </section>
 
-  <!-- ===== FOR ORGANIZATIONS ===== -->
+  <!-- ===== EMPLOYERS & CSR PARTNERS ===== -->
   <section id="partners" class="py-5 bg-light">
     <div class="container">
       <div class="row align-items-center g-4">
         <div class="col-lg-6">
           <h2><i class="bi bi-building me-2 text-vino"></i>For Employers & CSR Partners</h2>
-          <p><em>Support the people who support everyone else</em> Childcare is one of the main reasons healthcare and shift workers leave their jobs. ShiftSitter gives hospitals, schools and employers a simple, low-cost way to retain staff, by helping them care for their families while they care for others.</p>
-          <ul class="list-unstyled">
-            <li class="mb-1"><i class="bi bi-check2-circle text-success me-1"></i> Onboard 50–100+ families quickly</li>
-            <li class="mb-1"><i class="bi bi-check2-circle text-success me-1"></i> Same signup flow, tagged as Partner for clean analytics</li>
-            <li class="mb-1"><i class="bi bi-check2-circle text-success me-1"></i> Private, secure data practices</li>
+          <p class="mb-2"><em>Support the people who support everyone else.</em></p>
+          <p>Childcare gaps cause up to <strong>30%</strong> of workforce turnover among healthcare and shift workers.
+            ShiftSitter gives employers a <strong>measurable, low-cost</strong> way to retain staff while meeting CSR goals.</p>
+
+          <ul class="list-unstyled impact-bullets">
+            <li><i class="bi bi-graph-up-arrow me-2 text-success"></i> Every $1,000 in sponsorship helps 50+ families stay in the workforce</li>
+            <li><i class="bi bi-clock-history me-2 text-success"></i> Reduces absenteeism by up to 30%</li>
+            <li><i class="bi bi-cash-coin me-2 text-success"></i> Retains an estimated $250K+ in annual workforce value per 100 employees supported</li>
           </ul>
-          <a class="btn btn-vino mt-2" data-bs-toggle="offcanvas" href="#signupDrawer" role="button" aria-controls="signupDrawer">I’m a Local Partner</a>
+
+          <a class="btn btn-vino mt-2" data-bs-toggle="offcanvas" href="#signupDrawer" role="button" aria-controls="signupDrawer" data-role="partner">
+            I’m a Local Partner
+          </a>
         </div>
         <div class="col-lg-6">
-          <img src="img/partners-placeholder.jpg" alt="Parents in uniform outside a hospital coordinating childcare" class="img-fluid rounded shadow">
+          <img src="img/img1-shiftsitter.png" alt="Employers supporting families" class="img-fluid rounded shadow">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="bg-vino text-white text-center py-3">
-    <p class="mb-0">© <span id="year"></span> ShiftSitter | All Rights Reserved</p>
-    <div class="mt-2">
-      <a href="https://instagram.com/ShiftSitter" class="text-white me-3" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-      <a href="https://twitter.com/ShiftSitter" class="text-white me-3" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-      <a href="#" class="text-white me-3" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-      <a href="#" class="text-white" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-    </div>
-  </footer>
+<!-- ===== FOOTER ===== -->
+<footer class="bg-vino text-white text-center py-3">
+  <p class="mb-0">© <span id="year"></span> ShiftSitter | All Rights Reserved</p>
+  <img src="img/logo-shiftSitter.png" alt="ShiftSitter Logo" class="brand-logo me-2">
+  <div class="mt-2 small">
+    <a href="https://instagram.com/ShiftSitter" target="_blank" class="text-white me-3" aria-label="Instagram">
+      <i class="bi bi-instagram"></i>
+    </a>
+    <a href="https://twitter.com/ShiftSitter" target="_blank" class="text-white me-3" aria-label="Twitter">
+      <i class="bi bi-twitter-x"></i>
+    </a>
+    <a href="https://www.facebook.com/share/16U7UPmUw8/" target="_blank" class="text-white me-3" aria-label="Facebook">
+      <i class="bi bi-facebook"></i>
+    </a>
+    <a href="https://linkedin.com" target="_blank" class="text-white" aria-label="LinkedIn">
+      <i class="bi bi-linkedin"></i>
+    </a>
+    <span class="d-block mt-2">Contact: shiftsittersocial406@gmail.com</span>
+  </div>
+</footer>
 
-  <!-- ===== OFFCANVAS (Single form for Parent/Ambassador/Partner) ===== -->
+  <!-- ===== OFFCANVAS FORM ===== -->
   <div class="offcanvas offcanvas-end offcanvas-vino" tabindex="-1" id="signupDrawer" aria-labelledby="signupDrawerLabel">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="signupDrawerLabel">Join Early Access</h5>
@@ -232,28 +245,26 @@
             <div class="invalid-feedback">Please add your location.</div>
           </div>
 
+          <!-- Ages (checkboxes) -->
           <div class="col-md-6">
             <label class="form-label">Age of your children</label>
-            <select class="form-select" name="ages" multiple size="4" required>
-              <option>0–3</option>
-              <option>4–7</option>
-              <option>8–12</option>
-              <option>13+</option>
-            </select>
-            <div class="form-text">Use Ctrl/Cmd to select multiple</div>
-            <div class="invalid-feedback">Select at least one.</div>
+            <div class="ss-checks">
+              <div class="form-check"><input class="form-check-input" type="checkbox" name="ages" value="0–3" id="age0"><label class="form-check-label" for="age0">0–3</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" name="ages" value="4–7" id="age1"><label class="form-check-label" for="age1">4–7</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" name="ages" value="8–12" id="age2"><label class="form-check-label" for="age2">8–12</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" name="ages" value="13+" id="age3"><label class="form-check-label" for="age3">13+</label></div>
+            </div>
           </div>
 
+          <!-- Challenges (checkboxes) -->
           <div class="col-md-6">
             <label class="form-label">Biggest childcare challenge</label>
-            <select class="form-select" name="challenge" multiple size="4" required>
-              <option>Cost</option>
-              <option>Schedule Conflicts</option>
-              <option>Trust</option>
-              <option>Availability</option>
-            </select>
-            <div class="form-text">Use Ctrl/Cmd to select multiple</div>
-            <div class="invalid-feedback">Select at least one.</div>
+            <div class="ss-checks">
+              <div class="form-check"><input class="form-check-input" type="checkbox" name="challenge" value="Cost" id="ch0"><label class="form-check-label" for="ch0">Cost</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" name="challenge" value="Schedule Conflicts" id="ch1"><label class="form-check-label" for="ch1">Schedule Conflicts</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" name="challenge" value="Trust" id="ch2"><label class="form-check-label" for="ch2">Trust</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" name="challenge" value="Availability" id="ch3"><label class="form-check-label" for="ch3">Availability</label></div>
+            </div>
           </div>
 
           <div class="col-12">
@@ -284,9 +295,11 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-  <!-- Firebase (optional; fill config in script.js) -->
+  <!-- (Opcional) Firebase compat SDKs (si luego decides usar Firestore) -->
+  <!--
   <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
+  -->
 
   <script src="script.js"></script>
 </body>

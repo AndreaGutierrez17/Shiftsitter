@@ -1,20 +1,17 @@
 // ===== AOS init =====
 document.addEventListener('DOMContentLoaded', () => {
   if (window.AOS) AOS.init({ once: true });
+  document.getElementById('year').textContent = new Date().getFullYear();
 });
 
-// ===== Year in footer =====
-document.getElementById('year').textContent = new Date().getFullYear();
-
-// ===== Preserve ref=? and set role based on open buttons =====
+// ===== Preserve ref and set role from triggers =====
 (function(){
   const qs = new URLSearchParams(location.search);
   const ref = qs.get('ref');
   const refInput = document.getElementById('ref');
   if (ref && refInput) refInput.value = ref;
 
-  // Role switching via triggers (if you add data-role on any button later)
-  document.querySelectorAll('[data-bs-target="#signupDrawer"], [href="#signupDrawer"]').forEach(btn => {
+  document.querySelectorAll('[data-role]').forEach(btn => {
     btn.addEventListener('click', () => {
       const role = btn.getAttribute('data-role') || 'parent';
       const roleInput = document.getElementById('role');
@@ -23,11 +20,12 @@ document.getElementById('year').textContent = new Date().getFullYear();
   });
 })();
 
-// ===== ISOLATED Countdown (does NOT pollute global scope) =====
+// ===== ISOLATED Countdown (unchanged; safe) =====
 (function countdownModule(){
   const el = document.getElementById('countdown');
   if (!el) return;
 
+  // Ajustada: objetivo 31 Dic 2025 23:59:59
   const launchDate = new Date("Dec 31, 2025 23:59:59").getTime();
 
   let timerId;
@@ -49,16 +47,15 @@ document.getElementById('year').textContent = new Date().getFullYear();
   tick();
 })();
 
-// ===== Form validation + optional Firebase hook =====
+// ===== Form validation + payload + (optional) sender =====
 (function formModule(){
   const form = document.getElementById('signupForm');
   const ok = document.getElementById('successMsg');
   if (!form) return;
 
-  // Helper to read multiselect values
-  function readMulti(name){
-    const sel = form.querySelector(`[name="${name}"]`);
-    return sel ? Array.from(sel.selectedOptions).map(o => o.value) : [];
+  // Helper: read checkbox group values
+  function readChecks(name){
+    return Array.from(form.querySelectorAll(`input[name="${name}"]:checked`)).map(i => i.value);
   }
 
   form.addEventListener('submit', async (e) => {
@@ -73,34 +70,34 @@ document.getElementById('year').textContent = new Date().getFullYear();
       role: fd.get('role') || 'parent',
       source: fd.get('source') || 'site',
       ref: fd.get('ref') || '',
-      name: fd.get('name'),
-      email: fd.get('email'),
-      children: Number(fd.get('children')),
-      location: fd.get('location'),
-      ages: readMulti('ages'),
-      challenge: readMulti('challenge'),
+      name: fd.get('name') || '',
+      email: fd.get('email') || '',
+      children: Number(fd.get('children') || 0),
+      location: fd.get('location') || '',
+      ages: readChecks('ages'),               // checkbox array
+      challenge: readChecks('challenge'),     // checkbox array
       affiliate: !!fd.get('affiliate'),
       consent: !!fd.get('consent'),
       ts: new Date().toISOString(),
       ua: navigator.userAgent
     };
 
-    // === Firebase (optional) ===
-    const firebaseConfig = {
-      // apiKey: "...",
-      // authDomain: "...",
-      // projectId: "...",
-    };
     try{
-      if (firebaseConfig.projectId){
-        if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-        await db.collection('early_access').add(payload);
-      } else {
-        console.log('Payload (no Firebase config yet):', payload);
-      }
+      // === Sender (elige uno):
+      // A) Google Apps Script → Sheets (pega tu URL /exec)
+      // const WEB_APP_URL = 'https://script.google.com/macros/s/XXXX/exec';
+      // const res = await fetch(WEB_APP_URL, {
+      //   method: 'POST', headers: {'Content-Type':'application/json'},
+      //   body: JSON.stringify(payload)
+      // });
+      // const out = await res.json();
+      // if (!out.ok) throw new Error(out.error || 'Write failed');
+
+      // B) Solo demo local (mientras tanto)
+      console.log('Payload:', payload);
+
       ok.classList.remove('d-none');
-      setTimeout(()=>{ ok.classList.add('d-none'); form.reset(); }, 2000);
+      setTimeout(()=>{ ok.classList.add('d-none'); form.reset(); }, 1800);
     }catch(err){
       console.error(err);
       alert('Network error. Please try again.');
