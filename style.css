@@ -54,3 +54,90 @@ body.bg-deep{ background: radial-gradient(1200px 800px at 50% -10%, #11202b 0%, 
 @media (max-width: 991px){
   .brand-logo{ height:44px; } /* un poco más grande en móvil para visibilidad */
 }
+
+.card h3 {
+  color: #ffffff; /* más visible */
+  font-weight: 800;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.card h3:hover {
+  color: #1e90ff; /* tono azul profesional */
+  text-shadow: 0 0 10px rgba(30, 144, 255, 0.7);
+}
+
+/* ==== TITLES FIX: Better visibility & contrast ==== */
+
+/* Título principal "Features" */
+.features-title {
+  color: #ffffff;
+  font-size: 1.9rem;
+  font-weight: 800;
+  text-align: center;
+  margin: 60px 0 30px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 10px rgba(47, 124, 246, 0.7);
+  animation: fadeInUp 1s ease-in-out;
+}
+
+/* Subtítulos de las tarjetas (Trusted & Safe, Schedule Sync...) */
+.card-dark h3 {
+  color: #eaf2ff; /* blanco brillante */
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 6px rgba(47, 124, 246, 0.5);
+  transition: all 0.3s ease-in-out;
+}
+
+.card-dark h3:hover {
+  color: var(--primary);
+  text-shadow: 0 0 10px rgba(47, 124, 246, 0.8);
+  transform: translateY(-2px);
+}
+
+/* Animación de entrada suave */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Maryland note */
+.note-md{ background:#091119; border-top:1px solid #ffffff14; border-bottom:1px solid #ffffff14; padding:.85rem 0; color:var(--muted);
+ }
+
+ /* Secciones */
+.section-dark{ background: linear-gradient(180deg, var(--ink), var(--ink-2)); }
+.section-deep{ background: linear-gradient(180deg, var(--ink-2), var(--ink-3)); }
+.value-card{
+  max-width:980px; padding:2rem; border-radius:14px; margin:0 auto;
+  border:1px solid #ffffff22; background:#ffffff08; box-shadow: 0 10px 26px rgba(0,0,0,.35);
+}
+.card.feature{
+  background:#ffffff08; border:1px solid #ffffff1f; border-radius:14px; padding:1.2rem;
+  color:var(--text); box-shadow: 0 10px 26px rgba(0,0,0,.3);
+}
+.text-accent{ color: var(--accent)!important; }
+
+/* Buttons */
+.btn-primary-soft{
+  background: transparent; color: var(--text); border:1px solid #ffffff33;
+  border-radius:999px; padding:.55rem 1rem; font-weight:800;
+}
+.btn-primary-soft:hover{ background:#ffffff12; color:var(--text); }
+.btn-cta{
+  border-radius:999px; padding:.9rem 1.4rem; font-weight:900;
+  color:var(--ink); background:linear-gradient(180deg,#fff,#dfe9ff);
+  box-shadow:0 12px 34px rgba(0,0,0,.35);
+}
+.btn-cta:hover{ transform: translateY(-1px); }
