@@ -1,321 +1,258 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ShiftSitter — Early Access</title>
-  <link rel="icon" type="image/png" href="img/logo-shiftsitter.png" />
 
-  <!-- Bootstrap & Icons -->
+  <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-
-  <!-- Animate.css & AOS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-  <!-- Main CSS -->
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="bg-deep">
 
-  <!-- Floating Socials (edit hrefs) -->
-  <ul class="ss-socials">
-    <li><a href="https://facebook.com/YourPage" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a></li>
-    <li><a href="https://instagram.com/YourPage" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a></li>
-    <li><a href="https://tiktok.com/@YourPage" target="_blank" aria-label="TikTok"><i class="bi bi-tiktok"></i></a></li>
-    <li><a href="https://linkedin.com/company/YourPage" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a></li>
-  </ul>
+  <!-- Socials floating -->
+  <div class="social-float">
+    <a href="https://twitter.com/ShiftSitterOfficial" target="_blank" aria-label="X / Twitter"><i class="bi bi-twitter-x"></i></a>
+    <a href="https://facebook.com/ShiftSitter" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+    <a href="https://instagram.com/ShiftSitter" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+    <a href="https://tiktok.com/@ShiftSitter" target="_blank" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+  </div>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-deep sticky-top shadow-sm">
+  <!-- NAV -->
+  <nav class="navbar navbar-dark navbar-expand-lg sticky-top bg-glass">
     <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="#">
-        <!-- Replace logo src -->
-        <img src="img/logo-shiftsitter.png" alt="ShiftSitter Logo" class="brand-logo me-2">
-        <span class="brand-text fw-bold">ShiftSitter</span>
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <img src="img/logo-shiftsitter.png" alt="ShiftSitter Logo" class="brand-logo">  <!-- Ruta del logo -->
+        <span class="fw-bold">ShiftSitter</span>
       </a>
-      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse justify-content-end" id="navMain">
-        <ul class="navbar-nav align-items-lg-center">
-          <li class="nav-item"><a class="nav-link" href="#value">Why</a></li>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
           <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
-          <li class="nav-item"><a class="nav-link" href="#ambassadors">Ambassadors</a></li>
-          <li class="nav-item"><a class="nav-link" href="#partners">Employers</a></li>
-          <li class="nav-item ms-lg-2">
-            <a class="btn btn-cta" data-bs-toggle="offcanvas" href="#signupDrawer" role="button" aria-controls="signupDrawer">
-              Join Early Access
-            </a>
+          <li class="nav-item"><a class="nav-link" href="#how">How it works</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+          <li class="nav-item ms-lg-3">
+            <button class="btn btn-primary rounded-4" data-bs-toggle="offcanvas" data-bs-target="#signupCanvas">Request Early Access</button>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <header class="hero d-flex align-items-center text-center text-white">
-    <div class="container animate__animated animate__fadeIn">
-      <h1 class="mb-2 fw-black">ShiftSitter</h1>
-      <p class="lead mb-2">Smart, verified childcare swaps for shift-working families.</p>
-      <p class="sublead">Built by caregivers, for caregivers — using real-time schedule sync, background-checked matching, and instant chat support.</p>
+  <!-- HERO -->
+  <header class="hero position-relative text-center text-light">
+    <img src="img/hero.jpg" class="hero-bg" alt="Parents and kids at a playground"> <!-- Ruta de imagen HERO -->
+    <div class="hero-overlay"></div>
 
-      <!-- Countdown + CTA -->
-      <div class="cta-row">
-        <span id="countdown" aria-live="polite" class="badge-time"></span>
-        <a class="btn btn-cta" data-bs-toggle="offcanvas" href="#signupDrawer" role="button" aria-controls="signupDrawer">
+    <div class="container position-relative py-5">
+      <span class="badge bg-badge rounded-pill px-3 py-2 mb-3"><i class="bi bi-geo-alt me-2"></i>Launching First in Maryland</span>
+      <h1 class="display-4 fw-extrabold mb-3">ShiftSitter</h1>
+      <p class="lead text-muted-strong mx-auto" style="max-width: 760px;">
+        Smart, verified childcare swaps for shift-working families — real-time schedule sync, background-checked matching, and instant support.
+      </p>
+
+      <!-- Countdown -->
+      <div id="countdown" class="countdown mt-4 mb-4" aria-live="polite">Loading…</div>
+
+      <div class="d-flex justify-content-center gap-3">
+        <button class="btn btn-primary btn-lg rounded-4" data-bs-toggle="offcanvas" data-bs-target="#signupCanvas">
           Become a Founding Member Family
-        </a>
+        </button>
       </div>
-      <p class="micro mt-2">Early sign-ups get <strong>6 months free</strong>.</p>
 
-      <!-- Replace hero background image via CSS; optional foreground image below -->
-      <!-- <img src="img/hero-foreground.jpg" class="hero-img d-none d-md-inline mt-4 rounded shadow" alt="Caregivers hand-off"> -->
+      <p class="mt-3 text-muted-strong">Early sign-ups get <strong>6 months free</strong>.</p>
     </div>
   </header>
 
-  <!-- Maryland Notice -->
-  <section class="notice py-3">
-    <div class="container text-center">
-      <p class="mb-0">
-        <strong>Launching first in Maryland!</strong>
-        We’re starting locally to build strong community support. Not in Maryland?
-        Join the waitlist to be notified when we launch in your state.
-      </p>
-    </div>
-  </section>
-
-  <!-- Core Value -->
-  <section id="value" class="py-5 value-section text-center text-white">
+  <!-- HOW -->
+  <section id="how" class="py-5">
     <div class="container">
-      <h2 class="mb-4" data-aos="fade-up"><i class="bi bi-shield-check me-2"></i>Core Value</h2>
-      <div class="row justify-content-center">
-        <div class="col-xl-10">
-          <div class="value-block" data-aos="zoom-in">
-            <p class="display-6 fw-semibold mb-3">No more costly, unreliable childcare.</p>
-            <p class="h4 fw-normal mb-0">
-              ShiftSitter’s multi-facet pairing algorithm matches verified local families by schedule, distance,
-              and trust preferences — safely and instantly.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Features -->
-  <section id="features" class="py-5 bg-ink">
-    <div class="container">
-      <h2 class="text-center text-white mb-4" data-aos="fade-up">Features</h2>
-      <div class="row g-4">
-        <div class="col-md-4" data-aos="zoom-in">
-          <div class="card feature h-100">
-            <div class="d-flex align-items-center mb-2">
-              <i class="bi bi-patch-check-fill fs-3 me-2"></i>
-              <h5 class="mb-0">Trusted & Safe</h5>
-            </div>
-            <p class="mb-0">ID verification & background checks with geo-fencing and roaming safeguards.</p>
-          </div>
-        </div>
-        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="60">
-          <div class="card feature h-100">
-            <div class="d-flex align-items-center mb-2">
-              <i class="bi bi-people-fill fs-3 me-2"></i>
-              <h5 class="mb-0">Local Reciprocity</h5>
-            </div>
-            <p class="mb-0">Parents helping parents — matched by schedule and trust preferences. No sitters. No fees.</p>
-          </div>
-        </div>
-        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="120">
-          <div class="card feature h-100">
-            <div class="d-flex align-items-center mb-2">
-              <i class="bi bi-geo-alt-fill fs-3 me-2"></i>
-              <h5 class="mb-0">Smart Matching Nearby</h5>
-            </div>
-            <p class="mb-0">Syncs with your shift schedule to find families close to home, work, or hospital.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Ambassadors -->
-  <section id="ambassadors" class="py-5 text-center text-white gradient-deep">
-    <div class="container">
-      <h2 class="mb-3" data-aos="fade-up"><i class="bi bi-megaphone me-2"></i>Founding Ambassadors</h2>
-      <p class="mb-4" data-aos="fade-up" data-aos-delay="80">
-        Help launch a childcare movement that keeps families in the workforce.
-        Become a Founding Ambassador and help bring ShiftSitter to your community.
-        Earn rewards for every verified family you introduce.
-      </p>
-
-      <a class="btn btn-outline-light" data-bs-toggle="offcanvas" href="#signupDrawer" role="button" aria-controls="signupDrawer" data-role="ambassador">
-        Apply as Ambassador
-      </a>
-
-      <!-- Replace section image -->
-      <div class="mt-4">
-        <img src="img/ambassadors.jpg" alt="Community support" class="img-fluid rounded shadow">
-      </div>
-    </div>
-  </section>
-
-  <!-- Employers & CSR Partners -->
-  <section id="partners" class="py-5 bg-ink">
-    <div class="container">
-      <div class="row align-items-center g-4">
-        <div class="col-lg-6 text-white">
-          <h2 class="mb-2"><i class="bi bi-building me-2 text-accent"></i>For Employers & CSR Partners</h2>
-          <p class="mb-2"><em>Support the people who support everyone else.</em></p>
-          <p class="mb-3">
-            Childcare gaps cause up to <strong>30%</strong> of workforce turnover among healthcare and shift workers.
-            ShiftSitter gives employers a <strong>measurable, low-cost</strong> way to retain staff while meeting CSR goals.
-          </p>
-
-          <ul class="list-unstyled impact-bullets">
-            <li><i class="bi bi-graph-up-arrow me-2 text-success"></i> Every $1,000 in sponsorship helps 50+ families stay in the workforce</li>
-            <li><i class="bi bi-clock-history me-2 text-success"></i> Reduces absenteeism by up to 30%</li>
-            <li><i class="bi bi-cash-coin me-2 text-success"></i> Retains an estimated $250K+ per 100 employees supported</li>
-          </ul>
-
-          <a class="btn btn-cta mt-2" data-bs-toggle="offcanvas" href="#signupDrawer" role="button" aria-controls="signupDrawer" data-role="partner">
-            I’m a Local Partner
-          </a>
-        </div>
-
+      <div class="row g-4 align-items-center">
         <div class="col-lg-6">
-          <!-- Replace section image -->
-          <img src="img/partners.jpg" alt="Employers supporting families" class="img-fluid rounded shadow">
+          <div class="card card-dark p-4">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <i class="bi bi-diagram-3 fs-4 text-primary"></i>
+              <h3 class="m-0">How it helps</h3>
+            </div>
+            <p class="mb-2 text-muted-strong">Parents help parents — nearby, trusted, and matched by schedule. No sitters. No fees.</p>
+            <p class="mb-0 text-muted-strong">Our trust layer ensures safer, reciprocal swaps so caregivers can keep working while kids are supported by a verified community.</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <img src="img/how.jpg" class="img-fluid rounded-4 shadow-soft" alt="Parent network illustration"> <!-- Ruta imagen sección -->
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-deep text-white text-center py-3">
-    <p class="mb-0">© <span id="year"></span> ShiftSitter • All Rights Reserved</p>
-    <small class="d-block mt-2">Contact: shiftsittersocial406@gmail.com</small>
+  <!-- FEATURES -->
+  <section id="features" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Features</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card card-dark p-4 h-100">
+            <i class="bi bi-shield-check fs-2 text-primary mb-2"></i>
+            <h5>Trusted &amp; Safe</h5>
+            <p class="text-muted-strong">ID verification, checks, geo-fencing and roaming safeguards.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-dark p-4 h-100">
+            <i class="bi bi-clock-history fs-2 text-primary mb-2"></i>
+            <h5>Schedule Sync</h5>
+            <p class="text-muted-strong">Real-time pairing by shift availability and proximity.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-dark p-4 h-100">
+            <i class="bi bi-diagram-2 fs-2 text-primary mb-2"></i>
+            <h5>Local Reciprocity</h5>
+            <p class="text-muted-strong">Parents helping parents — no sitters, no fees.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Maryland note -->
+  <section class="py-5">
+    <div class="container">
+      <div class="alert alert-dark border-0 bg-note text-note">
+        <strong>Launching First in Maryland!</strong>
+        <span class="ms-2">We’re starting locally to build strong community support. Not in Maryland? Join the waitlist to be notified when we launch in your state.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-5 border-top border-secondary-subtle">
+    <div class="container d-flex flex-column flex-lg-row gap-3 justify-content-between align-items-start">
+      <div>
+        <img src="img/logo-shiftsitter.png" class="brand-logo mb-2" alt="ShiftSitter">
+        <div class="small text-muted-strong">© <span id="year"></span> ShiftSitter</div>
+      </div>
+      <div class="small text-muted-strong">
+        <strong>Contact:</strong> hello@shiftsitter.com
+        <!-- TODO: aquí puedes colocar el aviso de privacidad / términos -->
+      </div>
+    </div>
   </footer>
 
-  <!-- Offcanvas Form -->
-  <div class="offcanvas offcanvas-end offcanvas-deep" tabindex="-1" id="signupDrawer" aria-labelledby="signupDrawerLabel">
+  <!-- OFFCANVAS SIGNUP -->
+  <div class="offcanvas offcanvas-end text-light bg-offcanvas" tabindex="-1" id="signupCanvas" aria-labelledby="signupCanvasLabel">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="signupDrawerLabel">Join Early Access</h5>
+      <h5 class="offcanvas-title" id="signupCanvasLabel">Join Early Access</h5>
       <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <!-- Maryland copy -->
-      <div class="alert alert-dark text-white mb-3 offcanvas-note">
-        <strong>ShiftSitter is currently onboarding families in Maryland.</strong>
-        If you’re in another state, you can still register — we’ll notify you when we launch in your area.
-      </div>
+      <form id="signupForm" novalidate>
+        <div class="mb-3">
+          <label class="form-label">Full Name</label>
+          <input type="text" class="form-control" name="fullName" placeholder="e.g. David Wilson" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" name="email" placeholder="e.g. david@mail.com" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Number of Children</label>
+          <input type="number" min="0" class="form-control" name="children" placeholder="e.g. 2" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Age of Children</label>
+          <select class="form-select" name="ages" required>
+            <option value="" selected disabled>Select…</option>
+            <option>0–2</option><option>3–5</option><option>6–9</option><option>10–12</option><option>13+</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Biggest Childcare Challenge</label>
+          <select class="form-select" name="challenge" required>
+            <option value="" selected disabled>Select…</option>
+            <option>Overnight shifts</option>
+            <option>Weekend coverage</option>
+            <option>Last-minute swaps</option>
+            <option>Transportation</option>
+            <option>Cost</option>
+          </select>
+        </div>
 
-      <form id="signupForm" class="needs-validation" novalidate>
-        <!-- Hidden tags -->
-        <input type="hidden" name="role" id="role" value="parent">
-        <input type="hidden" name="source" value="site">
-        <input type="hidden" name="ref" id="ref" value="">
+        <div class="small text-muted-strong mb-3">
+          ShiftSitter is currently onboarding families in <strong>Maryland</strong>. If you’re in another state, you can still register — we’ll notify you as soon as we launch in your area.
+        </div>
 
         <div class="row g-3">
           <div class="col-md-6">
-            <label class="form-label">Full Name</label>
-            <input type="text" class="form-control" name="name" placeholder="Jane Doe" required>
-            <div class="invalid-feedback">Please enter your name.</div>
-          </div>
-
-          <div class="col-md-6">
-            <label class="form-label">Email</label>
-            <input type="email" class="form-control" name="email" placeholder="jane@example.com" required>
-            <div class="invalid-feedback">Enter a valid email.</div>
-          </div>
-
-          <div class="col-md-6">
             <label class="form-label">State</label>
-            <select class="form-select" name="state" id="state" required>
-              <!-- Populated in JS with full list; MD preselected -->
+            <select class="form-select" id="stateSelect" required>
+              <option value="" selected disabled>Select your state</option>
+              <option>Maryland</option>
+              <option>Virginia</option>
+              <option>District of Columbia</option>
+              <option>Pennsylvania</option>
+              <option>Delaware</option>
+              <option>West Virginia</option>
+              <option>New Jersey</option>
+              <option>New York</option>
+              <option>North Carolina</option>
+              <option>Other</option>
             </select>
-            <div class="invalid-feedback">Please select your state.</div>
           </div>
-
-          <div class="col-md-6">
+          <div class="col-md-6" id="cityWrap">
             <label class="form-label">City</label>
-            <input type="text" class="form-control" name="city" placeholder="e.g., Baltimore" required>
-            <div class="invalid-feedback">Please enter your city.</div>
-          </div>
-
-          <div class="col-md-6">
-            <label class="form-label">Number of Children</label>
-            <input type="number" class="form-control" name="children" min="0" placeholder="e.g., 2" required>
-            <div class="invalid-feedback">Please enter a number.</div>
-          </div>
-
-          <!-- Ages -->
-          <div class="col-md-6">
-            <label class="form-label">Age of your children</label>
-            <div class="ss-checks">
-              <div class="form-check"><input class="form-check-input" type="checkbox" name="ages" value="0–3" id="age0"><label class="form-check-label" for="age0">0–3</label></div>
-              <div class="form-check"><input class="form-check-input" type="checkbox" name="ages" value="4–7" id="age1"><label class="form-check-label" for="age1">4–7</label></div>
-              <div class="form-check"><input class="form-check-input" type="checkbox" name="ages" value="8–12" id="age2"><label class="form-check-label" for="age2">8–12</label></div>
-              <div class="form-check"><input class="form-check-input" type="checkbox" name="ages" value="13+" id="age3"><label class="form-check-label" for="age3">13+</label></div>
-            </div>
-          </div>
-
-          <!-- Challenges -->
-          <div class="col-md-12">
-            <label class="form-label">Biggest childcare challenge</label>
-            <div class="ss-checks">
-              <div class="form-check"><input class="form-check-input" type="checkbox" name="challenge" value="Cost" id="ch0"><label class="form-check-label" for="ch0">Cost</label></div>
-              <div class="form-check"><input class="form-check-input" type="checkbox" name="challenge" value="Schedule Conflicts" id="ch1"><label class="form-check-label" for="ch1">Schedule Conflicts</label></div>
-              <div class="form-check"><input class="form-check-input" type="checkbox" name="challenge" value="Trust" id="ch2"><label class="form-check-label" for="ch2">Trust</label></div>
-              <div class="form-check"><input class="form-check-input" type="checkbox" name="challenge" value="Availability" id="ch3"><label class="form-check-label" for="ch3">Availability</label></div>
-            </div>
-          </div>
-
-          <div class="col-12">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="1" id="affiliate" name="affiliate">
-              <label class="form-check-label" for="affiliate">Interested in being an affiliate & earning later?</label>
-            </div>
-          </div>
-
-          <div class="col-12">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="1" id="consent" name="consent" required>
-              <label class="form-check-label" for="consent">I agree to be contacted & accept the Privacy Policy.</label>
-              <div class="invalid-feedback">You must agree before submitting.</div>
-            </div>
-          </div>
-
-          <div class="col-12">
-            <button class="btn btn-cta w-100" type="submit">
-              <i class="bi bi-send me-1"></i>Request Early Access
-            </button>
-            <p id="successMsg" class="alert alert-success mt-3 d-none">✅ Thanks! We’ve received your info.</p>
+            <select class="form-select" id="citySelect" required>
+              <option value="" selected disabled>Select your city</option>
+            </select>
           </div>
         </div>
-      </form>
 
-      <!-- Placeholder: Database integration hook -->
-      <!-- TODO: Database integration (Firebase/Backend) goes here. Capture form data and store. -->
+        <!-- Hook para DB -->
+        <input type="hidden" id="dbPayload" name="dbPayload" value="">
+        <!-- TODO: aquí vas a interceptar el submit y enviar a tu backend/DB/Google Sheets -->
+
+        <button class="btn btn-primary w-100 rounded-4 mt-4" type="submit">Request Early Access</button>
+      </form>
     </div>
   </div>
 
-  <!-- Upsell Modal -->
-  <div class="modal fade" id="upsellModal" tabindex="-1" aria-labelledby="upsellLabel" aria-hidden="true">
+  <!-- PREMIUM UPSALE MODAL -->
+  <div class="modal fade" id="premiumModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content bg-ink text-white">
-        <div class="modal-header border-secondary">
-          <h5 class="modal-title" id="upsellLabel">Premium Founder Pass</h5>
+      <div class="modal-content bg-offcanvas text-light">
+        <div class="modal-header">
+          <h5 class="modal-title">Upgrade to Premium Founder Pass?</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          Would you like to upgrade to a <strong>$29 Premium Founder Pass</strong> and get <strong>12 months free</strong> when we launch?
+          Would you like to upgrade for an additional <strong>$29</strong> and get <strong>12 months free</strong> when we launch?
         </div>
-        <div class="modal-footer border-secondary">
-          <button type="button" class="btn btn-outline-light" data-upsell="no">No, thanks</button>
-          <button type="button" class="btn btn-cta" data-upsell="yes">Yes — get 12 months free</button>
+        <div class="modal-footer">
+          <button type="button" id="noPremium" class="btn btn-outline-light">No, keep Early Access</button>
+          <button type="button" id="yesPremium" class="btn btn-primary">Yes, get 12-month Pass</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONFIRMATION MODAL -->
+  <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-offcanvas text-light">
+        <div class="modal-header">
+          <h5 class="modal-title">Thanks!</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="confirmText"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Done</button>
         </div>
       </div>
     </div>
@@ -323,7 +260,6 @@
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

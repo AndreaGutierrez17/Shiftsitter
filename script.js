@@ -1,113 +1,114 @@
-// Init AOS
-if (window.AOS) AOS.init();
-
-// Current year
-document.getElementById('year').textContent = new Date().getFullYear();
-
-// Countdown to Feb 1, 2026 00:00:00
-const countdownEl = document.getElementById("countdown");
-const launchDate = new Date("Feb 1, 2026 00:00:00").getTime();
-
-(function startCountdown(){
-  function tick(){
-    const now = Date.now();
-    const distance = launchDate - now;
-
-    if (distance <= 0){
-      countdownEl.textContent = "🚀 We’re live!";
-      return;
-    }
-    const d = Math.floor(distance / (1000*60*60*24));
-    const h = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-    const m = Math.floor((distance % (1000*60*60)) / (1000*60));
-    const s = Math.floor((distance % (1000*60)) / 1000);
-    countdownEl.textContent = `${d}d ${h}h ${m}m ${s}s`;
-  }
-  tick();
-  setInterval(tick, 1000);
-})();
-
-// Auto-close navbar on link click (hamburger)
-document.querySelectorAll('.navbar .nav-link').forEach(link => {
-  link.addEventListener('click', () => {
+// ===== Helper: navbar autoclose on click (mobile) =====
+document.querySelectorAll('.navbar .nav-link').forEach(l => {
+  l.addEventListener('click', () => {
     const nav = document.getElementById('navMain');
-    if (nav && nav.classList.contains('show')) {
-      const bs = bootstrap.Collapse.getInstance(nav);
-      if (bs) bs.hide();
+    if (nav.classList.contains('show')) {
+      const bsCollapse = bootstrap.Collapse.getOrCreateInstance(nav);
+      bsCollapse.hide();
     }
   });
 });
 
-// Populate US states (MD preselected)
-const states = [
-  "Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware",
-  "District of Columbia","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa",
-  "Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota",
-  "Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey",
-  "New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon",
-  "Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah",
-  "Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"
-];
+// ===== Year in footer =====
+document.getElementById('year').textContent = new Date().getFullYear();
 
-(function fillStates(){
-  const sel = document.getElementById('state');
-  if (!sel) return;
-  sel.innerHTML = `<option value="" disabled selected>Select your state</option>` +
-    states.map(st => `<option value="${st}" ${st==="Maryland"?"selected":""}>${st}</option>`).join("");
-})();
-
-// Referral param capture (?ref=xxx)
-(function captureRef(){
-  const params = new URLSearchParams(location.search);
-  const ref = params.get("ref");
-  if (ref) {
-    const refInput = document.getElementById("ref");
-    if (refInput) refInput.value = ref;
-  }
-})();
-
-// Form validation + Success + Upsell
-const form = document.getElementById("signupForm");
-const successMsg = document.getElementById("successMsg");
-const upsellModalEl = document.getElementById('upsellModal');
-const upsellModal = upsellModalEl ? new bootstrap.Modal(upsellModalEl) : null;
-
-if (form) {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    if (!form.checkValidity()){
-      form.classList.add('was-validated');
-      return;
-    }
-
-    // TODO: Database integration (Firebase/Backend) goes here.
-    // Gather payload
-    const data = new FormData(form);
-    // Example: console.log(Object.fromEntries(data.entries()));
-
-    // Show upsell after “submission”
-    if (upsellModal) upsellModal.show();
-  });
+// ===== Countdown to Feb 1, 2026 00:00:00 local =====
+const deadline = new Date('2026-02-01T00:00:00');
+const countdownEl = document.getElementById('countdown');
+function tick() {
+  const now = new Date();
+  let diff = Math.max(0, deadline - now);
+  const d = Math.floor(diff / (1000*60*60*24)); diff -= d*86400000;
+  const h = Math.floor(diff / (1000*60*60)); diff -= h*3600000;
+  const m = Math.floor(diff / (1000*60)); diff -= m*60000;
+  const s = Math.floor(diff / 1000);
+  countdownEl.textContent = `${d}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
 }
+tick(); setInterval(tick, 1000);
+
+// ===== State -> City dynamic options =====
+const CITY_MAP = {
+  'Maryland': ['Baltimore','Columbia','Germantown','Silver Spring','Frederick','Rockville','Gaithersburg','Bethesda','Towson','Bowie','Other'],
+  'Virginia': ['Arlington','Alexandria','Fairfax','Norfolk','Richmond','Virginia Beach','Other'],
+  'District of Columbia': ['Washington, DC'],
+  'Pennsylvania': ['Philadelphia','Pittsburgh','Allentown','Harrisburg','Other'],
+  'Delaware': ['Wilmington','Dover','Newark','Other'],
+  'West Virginia': ['Charleston','Morgantown','Huntington','Other'],
+  'New Jersey': ['Newark','Jersey City','Paterson','Elizabeth','Other'],
+  'New York': ['New York City','Buffalo','Rochester','Yonkers','Other'],
+  'North Carolina': ['Charlotte','Raleigh','Greensboro','Durham','Other'],
+  'Other': ['Other']
+};
+
+const stateSelect = document.getElementById('stateSelect');
+const cityWrap = document.getElementById('cityWrap');
+const citySelect = document.getElementById('citySelect');
+
+function renderCities(state){
+  const cities = CITY_MAP[state] || ['Other'];
+  citySelect.innerHTML = '<option value="" disabled selected>Select your city</option>' + 
+    cities.map(c => `<option>${c}</option>`).join('');
+}
+stateSelect.addEventListener('change', e => renderCities(e.target.value));
+
+// ===== Form handling + Premium Upsell & Confirmation =====
+const signupForm = document.getElementById('signupForm');
+const premiumModal = new bootstrap.Modal(document.getElementById('premiumModal'));
+const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
+const confirmText = document.getElementById('confirmText');
+
+signupForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (!signupForm.checkValidity()) {
+    signupForm.classList.add('was-validated');
+    return;
+  }
+
+  // Prepara payload para DB
+  const formData = new FormData(signupForm);
+  const payload = Object.fromEntries(formData.entries());
+  payload.state = stateSelect.value;
+  payload.city = citySelect.value;
+
+  // Guarda en hidden para que lo tomes en tu integración
+  document.getElementById('dbPayload').value = JSON.stringify(payload);
+
+  // TODO: Aquí puedes enviar 'payload' a tu backend / Google Apps Script / Firebase, etc.
+  // fetch('TU_ENDPOINT', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)})
+
+  // Upsell modal
+  premiumModal.show();
+});
 
 // Upsell actions
-if (upsellModalEl){
-  upsellModalEl.addEventListener('click', (ev) => {
-    const yes = ev.target.closest('[data-upsell="yes"]');
-    const no  = ev.target.closest('[data-upsell="no"]');
+document.getElementById('yesPremium').addEventListener('click', () => {
+  // TODO: Reemplaza por tu enlace real de Stripe Checkout
+  const STRIPE_CHECKOUT_URL = 'https://checkout.stripe.com/c/pay_your_session_id';
+  window.location.href = STRIPE_CHECKOUT_URL;
+});
 
-    if (yes){
-      // Redirect to Stripe (placeholder)
-      window.location.href = "https://checkout.stripe.com/pay/STRIPE_CHECKOUT_URL";
-    }
-    if (no){
-      // Continue with standard confirmation
-      if (successMsg) successMsg.classList.remove("d-none");
-      setTimeout(() => {
-        successMsg?.classList.add("d-none");
-        form?.reset();
-      }, 2500);
-      upsellModal?.hide();
-    }
-  });
-}
+document.getElementById('noPremium').addEventListener('click', () => {
+  premiumModal.hide();
+
+  const selectedState = stateSelect.value;
+  if (selectedState === 'Maryland') {
+    confirmText.innerHTML = `🎉 You’re in! You’ll be among the first families we welcome into the Maryland community as we begin matching parent networks and support circles.`;
+  } else {
+    confirmText.innerHTML = `Thanks for signing up! We’re currently live in Maryland, but you’re now on the priority list for your state. We’ll notify you when ShiftSitter opens in your area — and early sign-ups will get first access.`;
+  }
+
+  confirmModal.show();
+
+  // Cierra el offcanvas para dar sensación de “listo”
+  const canvas = document.getElementById('signupCanvas');
+  bootstrap.Offcanvas.getOrCreateInstance(canvas).hide();
+
+  // Limpia el form
+  signupForm.reset();
+  citySelect.innerHTML = '<option value="" selected disabled>Select your city</option>';
+});
+
+// ===== Accesibilidad menor =====
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') signupForm.classList.remove('was-validated');
+});
