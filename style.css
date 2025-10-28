@@ -4,7 +4,7 @@
   --deep-2:#0b0f14;
   --ink:#0a1118;
   --glass:rgba(12,18,24,.55);
-  --muted:#a9b4be;
+  --muted:#e8ebee;
   --note:#111b24;
   --primary:#2f7cf6; /* azul vivo */
 }
@@ -123,10 +123,7 @@ body.bg-deep{ background: radial-gradient(1200px 800px at 50% -10%, #11202b 0%, 
   max-width:980px; padding:2rem; border-radius:14px; margin:0 auto;
   border:1px solid #ffffff22; background:#ffffff08; box-shadow: 0 10px 26px rgba(0,0,0,.35);
 }
-.card.feature{
-  background:#ffffff08; border:1px solid #ffffff1f; border-radius:14px; padding:1.2rem;
-  color:var(--text); box-shadow: 0 10px 26px rgba(0,0,0,.3);
-}
+
 .text-accent{ color: var(--accent)!important; }
 
 /* Buttons */
@@ -141,3 +138,53 @@ body.bg-deep{ background: radial-gradient(1200px 800px at 50% -10%, #11202b 0%, 
   box-shadow:0 12px 34px rgba(0,0,0,.35);
 }
 .btn-cta:hover{ transform: translateY(-1px); }
+
+/* === FIX DEFINITIVO DE TÍTULOS (Features Section) === */
+.card-dark h3,
+.card.feature h3,
+.section-dark h3,
+#features h3 {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.5px;
+}
+
+/* ==== FIX FEATURES SECTION ==== */
+
+/* Título principal */
+#features .features-title {
+  color: #ffffff !important;
+  font-size: 2rem;
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  letter-spacing: 1px;
+}
+
+/* Íconos */
+#features .icon-feature {
+  color: #2f7cf6; /* azul principal */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+#features .icon-feature:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+/* Títulos de las tarjetas */
+#features .feature-heading {
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  letter-spacing: 0.4px;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Textos */
+#features p {
+  color: #c4cbd3;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
