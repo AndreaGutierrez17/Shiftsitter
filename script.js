@@ -1,123 +1,113 @@
-// ===== AOS init =====
-document.addEventListener('DOMContentLoaded', () => {
-  if (window.AOS) AOS.init({ once: true });
-  document.getElementById('year').textContent = new Date().getFullYear();
-});
+// Init AOS
+if (window.AOS) AOS.init();
 
-// ===== Preserve ref and set role from triggers =====
-(function(){
-  const qs = new URLSearchParams(location.search);
-  const ref = qs.get('ref');
-  const refInput = document.getElementById('ref');
-  if (ref && refInput) refInput.value = ref;
+// Current year
+document.getElementById('year').textContent = new Date().getFullYear();
 
-  document.querySelectorAll('[data-role]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const role = btn.getAttribute('data-role') || 'parent';
-      const roleInput = document.getElementById('role');
-      if (roleInput) roleInput.value = role;
-    });
-  });
-})();
+// Countdown to Feb 1, 2026 00:00:00
+const countdownEl = document.getElementById("countdown");
+const launchDate = new Date("Feb 1, 2026 00:00:00").getTime();
 
-// ===== ISOLATED Countdown (unchanged; safe) =====
-(function countdownModule(){
-  const el = document.getElementById('countdown');
-  if (!el) return;
-
-  // Ajustada: objetivo 31 Dic 2025 23:59:59
-  const launchDate = new Date("Dec 31, 2025 23:59:59").getTime();
-
-  let timerId;
+(function startCountdown(){
   function tick(){
     const now = Date.now();
     const distance = launchDate - now;
+
     if (distance <= 0){
-      el.textContent = "🚀 We’re live!";
-      if (timerId) clearTimeout(timerId);
+      countdownEl.textContent = "🚀 We’re live!";
       return;
     }
-    const days = Math.floor(distance / (1000*60*60*24));
-    const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-    const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-    const seconds = Math.floor((distance % (1000*60)) / 1000);
-    el.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    timerId = setTimeout(() => requestAnimationFrame(tick), 1000);
+    const d = Math.floor(distance / (1000*60*60*24));
+    const h = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+    const m = Math.floor((distance % (1000*60*60)) / (1000*60));
+    const s = Math.floor((distance % (1000*60)) / 1000);
+    countdownEl.textContent = `${d}d ${h}h ${m}m ${s}s`;
   }
   tick();
+  setInterval(tick, 1000);
 })();
 
-// ===== Form validation + payload + (optional) sender =====
-(function formModule(){
-  const form = document.getElementById('signupForm');
-  const ok = document.getElementById('successMsg');
-  if (!form) return;
+// Auto-close navbar on link click (hamburger)
+document.querySelectorAll('.navbar .nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    const nav = document.getElementById('navMain');
+    if (nav && nav.classList.contains('show')) {
+      const bs = bootstrap.Collapse.getInstance(nav);
+      if (bs) bs.hide();
+    }
+  });
+});
 
-  // Helper: read checkbox group values
-  function readChecks(name){
-    return Array.from(form.querySelectorAll(`input[name="${name}"]:checked`)).map(i => i.value);
+// Populate US states (MD preselected)
+const states = [
+  "Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware",
+  "District of Columbia","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa",
+  "Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota",
+  "Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey",
+  "New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon",
+  "Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah",
+  "Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"
+];
+
+(function fillStates(){
+  const sel = document.getElementById('state');
+  if (!sel) return;
+  sel.innerHTML = `<option value="" disabled selected>Select your state</option>` +
+    states.map(st => `<option value="${st}" ${st==="Maryland"?"selected":""}>${st}</option>`).join("");
+})();
+
+// Referral param capture (?ref=xxx)
+(function captureRef(){
+  const params = new URLSearchParams(location.search);
+  const ref = params.get("ref");
+  if (ref) {
+    const refInput = document.getElementById("ref");
+    if (refInput) refInput.value = ref;
   }
+})();
 
-  form.addEventListener('submit', async (e) => {
+// Form validation + Success + Upsell
+const form = document.getElementById("signupForm");
+const successMsg = document.getElementById("successMsg");
+const upsellModalEl = document.getElementById('upsellModal');
+const upsellModal = upsellModalEl ? new bootstrap.Modal(upsellModalEl) : null;
+
+if (form) {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
     if (!form.checkValidity()){
       form.classList.add('was-validated');
       return;
     }
 
-    const fd = new FormData(form);
-    const payload = {
-      role: fd.get('role') || 'parent',
-      source: fd.get('source') || 'site',
-      ref: fd.get('ref') || '',
-      name: fd.get('name') || '',
-      email: fd.get('email') || '',
-      children: Number(fd.get('children') || 0),
-      location: fd.get('location') || '',
-      ages: readChecks('ages'),               // checkbox array
-      challenge: readChecks('challenge'),     // checkbox array
-      affiliate: !!fd.get('affiliate'),
-      consent: !!fd.get('consent'),
-      ts: new Date().toISOString(),
-      ua: navigator.userAgent
-    };
+    // TODO: Database integration (Firebase/Backend) goes here.
+    // Gather payload
+    const data = new FormData(form);
+    // Example: console.log(Object.fromEntries(data.entries()));
 
-    try{
-      // === Sender (elige uno):
-      // A) Google Apps Script → Sheets (pega tu URL /exec)
-      // const WEB_APP_URL = 'https://script.google.com/macros/s/XXXX/exec';
-      // const res = await fetch(WEB_APP_URL, {
-      //   method: 'POST', headers: {'Content-Type':'application/json'},
-      //   body: JSON.stringify(payload)
-      // });
-      // const out = await res.json();
-      // if (!out.ok) throw new Error(out.error || 'Write failed');
+    // Show upsell after “submission”
+    if (upsellModal) upsellModal.show();
+  });
+}
 
-      // B) Solo demo local (mientras tanto)
-      console.log('Payload:', payload);
+// Upsell actions
+if (upsellModalEl){
+  upsellModalEl.addEventListener('click', (ev) => {
+    const yes = ev.target.closest('[data-upsell="yes"]');
+    const no  = ev.target.closest('[data-upsell="no"]');
 
-      ok.classList.remove('d-none');
-      setTimeout(()=>{ ok.classList.add('d-none'); form.reset(); }, 1800);
-    }catch(err){
-      console.error(err);
-      alert('Network error. Please try again.');
+    if (yes){
+      // Redirect to Stripe (placeholder)
+      window.location.href = "https://checkout.stripe.com/pay/STRIPE_CHECKOUT_URL";
+    }
+    if (no){
+      // Continue with standard confirmation
+      if (successMsg) successMsg.classList.remove("d-none");
+      setTimeout(() => {
+        successMsg?.classList.add("d-none");
+        form?.reset();
+      }, 2500);
+      upsellModal?.hide();
     }
   });
-})();
-
-
-// === Cierre automático del menú hamburguesa al hacer clic en un enlace ===
-document.addEventListener('DOMContentLoaded', function () {
-  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-  const navbarCollapse = document.querySelector('.navbar-collapse');
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
-        toggle: false
-      });
-      bsCollapse.hide();
-    });
-  });
-});
-
+}
