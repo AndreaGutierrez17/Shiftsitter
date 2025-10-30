@@ -112,3 +112,45 @@ document.getElementById('noPremium').addEventListener('click', () => {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') signupForm.classList.remove('was-validated');
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('signupForm');
+  const successMsg = document.getElementById('successMsg');
+
+  if (!form) return;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.classList.add('was-validated');
+      return;
+    }
+
+    // recolectar datos base
+    const data = {};
+    const fd = new FormData(form);
+    fd.forEach((v, k) => data[k] = v);
+
+    // arrays
+    data.ages = Array.from(form.querySelectorAll('input[name="ages[]"]:checked')).map(i => i.value);
+    data.challenges = Array.from(form.querySelectorAll('input[name="challenge[]"]:checked')).map(i => i.value);
+
+    console.log('READY TO SAVE →', data);
+
+    // aquí luego pegamos tu fetch a Google / Apps Script
+    // fetch('TU_URL', { method:'POST', body: JSON.stringify(data) })
+
+    if (successMsg) successMsg.classList.remove('d-none');
+
+    // limpiar y cerrar después
+    setTimeout(() => {
+      form.reset();
+      form.classList.remove('was-validated');
+
+      const offcanvasEl = document.getElementById('signupDrawer');
+      const offcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
+      if (offcanvas) offcanvas.hide();
+    }, 1800);
+  });
+});

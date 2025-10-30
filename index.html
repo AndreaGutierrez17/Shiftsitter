@@ -39,7 +39,7 @@
           <li class="nav-item"><a class="nav-link" href="#how">How it works</a></li>
           <li class="nav-item"><a class="nav-link" href="#partners">Partners</a></li>
           <li class="nav-item ms-lg-3">
-            <button class="btn btn-primary rounded-4" data-bs-toggle="offcanvas" data-bs-target="#signupCanvas">Request Early Access</button>
+            <button class="btn btn-primary rounded-4" data-bs-toggle="offcanvas" data-bs-target="#signupDrawer">Request Early Access</button>
           </li>
         </ul>
       </div>
@@ -55,44 +55,22 @@
       <span class="badge bg-badge rounded-pill px-3 py-2 mb-3"><i class="bi bi-geo-alt me-2"></i>Launching First in Maryland</span>
       <h1 class="display-4 fw-extrabold mb-3">ShiftSitter</h1>
       <p class="lead text-muted-strong mx-auto" style="max-width: 760px;">
-        Smart, verified childcare swaps for shift-working families — real-time schedule sync, background-checked matching, and instant support.
+        Smart, verified reciprocal childcare for shift-working families — Advance pairing algorithms, schedule and lifestyle sync, background checks, and local matches.
       </p>
 
       <!-- Countdown -->
       <div id="countdown" class="countdown mt-4 mb-4" aria-live="polite">Loading…</div>
 
       <div class="d-flex justify-content-center gap-3">
-        <button class="btn btn-primary btn-lg rounded-4" data-bs-toggle="offcanvas" data-bs-target="#signupCanvas">
+        <button class="btn btn-primary btn-lg rounded-4" data-bs-toggle="offcanvas" data-bs-target="#signupDrawer">
           Become a Founding Member Family
         </button>
       </div>
 
-      <p class="mt-3 text-muted-strong">Early sign-ups get <strong>6 months free</strong>.</p>
+      <p class="mt-3 text-muted-strong">Be among the frist to build a <strong>ShiftSitter</strong> community.</p>
     </div>
   </header>
   
-
-  <!-- HOW -->
-  <section id="how" class="py-5">
-    <div class="container">
-      <div class="row g-4 align-items-center">
-        <div class="col-lg-6">
-          <div class="card card-dark p-4">
-            <div class="d-flex align-items-center gap-2 mb-2">
-              <i class="bi bi-diagram-3 fs-4 text-primary"></i>
-              <h3 class="m-0">How it helps</h3>
-            </div>
-            <p class="mb-2 text-muted-strong">Parents help parents — nearby, trusted, and matched by schedule. No sitters. No fees.</p>
-            <p class="mb-0 text-muted-strong">Our trust layer ensures safer, reciprocal swaps so caregivers can keep working while kids are supported by a verified community.</p>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <img src="img/who-shiftsitter.jpeg" class="img-fluid rounded-4 shadow-soft" alt="Parent network illustration"> <!-- Ruta imagen sección -->
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- FEATURES -->
 <section id="features" class="py-5">
   <div class="container">
@@ -123,13 +101,34 @@
           <i class="bi bi-diagram-2 fs-2 icon-feature mb-2"></i>
           <h5 class="feature-heading">Local Reciprocity</h5>
           <p class="text-muted-strong">
-            Parents helping parents — no sitters, no fees.
+            Parents helping parents.
           </p>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+  <!-- HOW -->
+  <section id="how" class="py-5">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+          <div class="card card-dark p-4">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <i class="bi bi-diagram-3 fs-4 text-primary"></i>
+              <h3 class="m-0">How it works</h3>
+            </div>
+            <p class="mb-2 text-muted-strong">Parents supporting parents - be matches with nearby mums and dads like you and enter into a reciprocal caregiving arrangement that fits your schedule and lifestyle.</p>
+            <p class="mb-0 text-muted-strong">No cost, just smart matching.</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <img src="img/who-shiftsitter.jpeg" class="img-fluid rounded-4 shadow-soft" alt="Parent network illustration"> <!-- Ruta imagen sección -->
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Maryland note -->
   <section class="py-5">
@@ -149,7 +148,7 @@
           <h2 class="fw-800"><i class="bi bi-building me-2 text-accent"></i>For Employers & CSR Partners</h2>
           <p class="mb-1"><em>Support the people who support everyone else.</em></p>
           <p class="mb-3">
-        Our pairing algorithm syncs with your shift schedule to find families close to home, work, or hospital.
+        provide 12-month platform access for your workforce, or sponsor local shift-working parents to help them find trusted, reciprocal childcare within their community.
           </p>
           <ul class="list-unstyled small mb-3">
             <li><i class="bi bi-graph-up-arrow me-2 text-success"></i> Every $1,000 in sponsorship helps 50+ families stay in the workforce</li>
@@ -157,7 +156,7 @@
             <li><i class="bi bi-cash-coin me-2 text-success"></i> Retains an estimated $250K+ value per 100 employees supported</li>
           </ul>
           <!-- Botón ajustable según feedback futuro -->
-          <a class="btn btn-primary-soft" data-bs-toggle="offcanvas" href="#signupCanvas" data-role="partner">
+          <a class="btn btn-primary-soft" data-bs-toggle="offcanvas" href="#signupDrawer" data-role="partner">
             Become a Sponsor
           </a>
         </div>
@@ -183,121 +182,143 @@
     </div>
   </footer>
 
-  <!-- OFFCANVAS SIGNUP -->
-  <div class="offcanvas offcanvas-end text-light bg-offcanvas" tabindex="-1" id="signupCanvas" aria-labelledby="signupCanvasLabel">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="signupCanvasLabel">Join Early Access</h5>
-      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-      <form id="signupForm" novalidate>
-        <div class="mb-3">
-          <label class="form-label">Full Name</label>
-          <input type="text" class="form-control" name="fullName" placeholder="e.g. David Wilson" required>
+ <!-- ===== OFFCANVAS FORM ===== -->
+<div class="offcanvas offcanvas-end bg-offcanvas text-white" tabindex="-1" id="signupDrawer" aria-labelledby="signupDrawerLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="signupDrawerLabel">Request Early Access</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form id="signupForm" class="needs-validation" novalidate>
+      <!-- hidden tags -->
+      <input type="hidden" name="role" id="role" value="parent">
+      <input type="hidden" name="source" value="site">
+      <input type="hidden" name="ref" id="ref" value="">
+
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Full name</label>
+          <input type="text" class="form-control" name="name" placeholder="Jane Doe" required>
+          <div class="invalid-feedback">Please enter your name.</div>
         </div>
-        <div class="mb-3">
+
+        <div class="col-md-6">
           <label class="form-label">Email</label>
-          <input type="email" class="form-control" name="email" placeholder="e.g. david@mail.com" required>
+          <input type="email" class="form-control" name="email" placeholder="jane@example.com" required>
+          <div class="invalid-feedback">Enter a valid email.</div>
         </div>
-        <div class="mb-3">
-          <label class="form-label">Number of Children</label>
-          <input type="number" min="0" class="form-control" name="children" placeholder="e.g. 2" required>
+
+        <div class="col-md-6">
+          <label class="form-label">How many children?</label>
+          <input type="number" class="form-control" name="children" min="1" placeholder="e.g. 2" required>
+          <div class="invalid-feedback">Please enter a number.</div>
         </div>
-        <div class="mb-3">
-          <label class="form-label">Age of Children</label>
-          <select class="form-select" name="ages" required>
-            <option value="" selected disabled>Select…</option>
-            <option>0–2</option>
-            <option>3–5</option>
-            <option>6–9</option>
-            <option>10–12</option>
-            <option>13+</option>
+
+        <!-- STATE (Maryland first) -->
+        <div class="col-md-6">
+          <label class="form-label">State</label>
+          <select class="form-select" name="state" required>
+            <option value="">Select your state</option>
+            <option value="Maryland">Maryland (active)</option>
+            <option value="Virginia">Virginia</option>
+            <option value="DC">Washington DC</option>
+            <option value="Pennsylvania">Pennsylvania</option>
+            <option value="New York">New York</option>
+            <option value="New Jersey">New Jersey</option>
+            <option value="Other">Other / Join waitlist</option>
           </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Biggest Childcare Challenge</label>
-          <select class="form-select" name="challenge" required>
-            <option value="" selected disabled>Select…</option>
-            <option>Overnight shifts</option>
-            <option>Weekend coverage</option>
-            <option>Last-minute swaps</option>
-            <option>Transportation</option>
-            <option>Cost</option>
-          </select>
+          <div class="invalid-feedback">Please pick a state.</div>
         </div>
 
-        <div class="small text-muted-strong mb-3">
-          ShiftSitter is currently onboarding families in <strong>Maryland</strong>. If you’re in another state, you can still register — we’ll notify you as soon as we launch in your area.
-        </div>
-
-        <div class="row g-3">
-          <div class="col-md-6">
-            <label class="form-label">State</label>
-            <select class="form-select" id="stateSelect" required>
-              <option value="" selected disabled>Select your state</option>
-              <option>Maryland</option>
-              <option>Virginia</option>
-              <option>District of Columbia</option>
-              <option>Pennsylvania</option>
-              <option>Delaware</option>
-              <option>West Virginia</option>
-              <option>New Jersey</option>
-              <option>New York</option>
-              <option>North Carolina</option>
-              <option>Other</option>
-            </select>
+        <!-- Ages: MULTI -->
+        <div class="col-md-12">
+          <label class="form-label">Age of your children (select all that apply)</label>
+          <div class="ss-checks d-flex flex-wrap gap-2">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="ages[]" value="0–3" id="age0">
+              <label class="form-check-label" for="age0">0–3</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="ages[]" value="4–7" id="age1">
+              <label class="form-check-label" for="age1">4–7</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="ages[]" value="8–12" id="age2">
+              <label class="form-check-label" for="age2">8–12</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="ages[]" value="13+" id="age3">
+              <label class="form-check-label" for="age3">13+</label>
+            </div>
           </div>
-          <div class="col-md-6" id="cityWrap">
-            <label class="form-label">City</label>
-            <select class="form-select" id="citySelect" required>
-              <option value="" selected disabled>Select your city</option>
-            </select>
+          <small class="text-muted-strong d-block mt-1">Example: you can select 0–3 and 8–12.</small>
+        </div>
+
+        <!-- Challenges: MULTI -->
+        <div class="col-md-12">
+          <label class="form-label">What’s your biggest childcare challenge?</label>
+          <div class="ss-checks d-flex flex-wrap gap-2">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="challenge[]" value="Cost" id="ch0">
+              <label class="form-check-label" for="ch0">Cost</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="challenge[]" value="Schedule Conflicts" id="ch1">
+              <label class="form-check-label" for="ch1">Schedule conflicts</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="challenge[]" value="Trust / safety" id="ch2">
+              <label class="form-check-label" for="ch2">Trust / safety</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="challenge[]" value="Availability" id="ch3">
+              <label class="form-check-label" for="ch3">Availability</label>
+            </div>
+            <!-- John pidió esto -->
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="challenge[]" value="Long shifts / irregular hours" id="ch4">
+              <label class="form-check-label" for="ch4">Long shifts / irregular hours</label>
+            </div>
           </div>
         </div>
 
-        <!-- Hook para DB -->
-        <input type="hidden" id="dbPayload" name="dbPayload" value="">
-        <!-- TODO: aquí vas a interceptar el submit y enviar a tu backend/DB/Google Sheets -->
-
-        <button class="btn btn-primary w-100 rounded-4 mt-4" type="submit">Request Early Access</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- PREMIUM UPSALE MODAL -->
-  <div class="modal fade" id="premiumModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content bg-offcanvas text-light">
-        <div class="modal-header">
-          <h5 class="modal-title">Upgrade to Premium Founder Pass?</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        <!-- Premium question sin Stripe -->
+        <div class="col-12 mt-2">
+          <label class="form-label">Upgrade to a Premium Founder Pass</label>
+          <p class="small text-muted-strong mb-2">
+            Would you like to upgrade for $29 and enjoy 12 months of Premium Access when we launch?
+          </p>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="premium" id="premiumYes" value="yes">
+            <label class="form-check-label" for="premiumYes">Yes – I want the 12-month Premium Founder Pass</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="premium" id="premiumNo" value="no" checked>
+            <label class="form-check-label" for="premiumNo">No – I’ll stick with Early Access for now</label>
+          </div>
         </div>
-        <div class="modal-body">
-          Would you like to upgrade for an additional <strong>$29</strong> and get <strong>12 months free</strong> when we launch?
+
+        <!-- Consent -->
+        <div class="col-12">
+          <div class="form-check mt-2">
+            <input class="form-check-input" type="checkbox" value="1" id="consent" name="consent" required>
+            <label class="form-check-label" for="consent">I agree to be contacted & accept the Privacy Policy.</label>
+            <div class="invalid-feedback">You must agree before submitting.</div>
+          </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" id="noPremium" class="btn btn-outline-light">No, keep Early Access</button>
-          <button type="button" id="yesPremium" class="btn btn-primary">Yes, get 12-month Pass</button>
+
+        <div class="col-12">
+          <button class="btn btn-primary w-100" type="submit">
+            <i class="bi bi-send me-1"></i> Request Early Access
+          </button>
+          <p id="successMsg" class="alert alert-success mt-3 d-none">
+            ✅ Thanks! We’ve received your info. We’ll send you the next update very soon.
+          </p>
         </div>
       </div>
-    </div>
+    </form>
   </div>
-
-  <!-- CONFIRMATION MODAL -->
-  <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content bg-offcanvas text-light">
-        <div class="modal-header">
-          <h5 class="modal-title">Thanks!</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" id="confirmText"></div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Done</button>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
