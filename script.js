@@ -1,4 +1,4 @@
-// ========== ShiftSitter JS ==========
+
 
 // 1) Cerrar navbar en móvil
 document.querySelectorAll('.navbar .nav-link').forEach(function (link) {
@@ -45,7 +45,7 @@ if (y) y.textContent = new Date().getFullYear();
   setInterval(tick, 1000);
 })();
 
-// 4) MULTI tipo Fiverr (ages + challenges)
+//  (ages + challenges)
 function initMultiSelects() {
   var blocks = document.querySelectorAll('.ss-multi');
   blocks.forEach(function (blk) {
@@ -77,7 +77,6 @@ function initMultiSelects() {
 }
 initMultiSelects();
 
-// 5) Premium modal → poner valor en hidden
 var premiumHidden = document.getElementById('premiumHidden');
 var premiumStatusText = document.getElementById('premiumStatusText');
 var savePremiumBtn = document.getElementById('savePremiumBtn');
@@ -95,9 +94,8 @@ if (savePremiumBtn) {
   });
 }
 
-// ===== helper para mostrar el popup centrado =====
 function showCenterSuccess(msg) {
-  // si ya hay uno, lo quitamos
+  
   var old = document.getElementById('ss-success-overlay');
   if (old) old.remove();
 
@@ -128,13 +126,13 @@ function showCenterSuccess(msg) {
   return wrap;
 }
 
-// 6) FORM
+
 var signupForm = document.getElementById('signupForm');
 if (signupForm) {
   signupForm.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    // validación bootstrap
+  
     if (!signupForm.checkValidity()) {
       signupForm.classList.add('was-validated');
       return;
@@ -148,10 +146,10 @@ if (signupForm) {
     });
 
     // ======= TU ENDPOINT DE GOOGLE =========
-    var ENDPOINT = 'https://script.google.com/macros/s/AKfycbzYzmDYpLp-M_dJUcoSVI4LeHY3SqboQV9b8eD_E_THRqD-vssvFmzQA1ODs4ItHYu2ng/exec';
-    // ======================================
+    var ENDPOINT = 'https://script.google.com/macros/s/AKfycbwTJRCZoW45VmnnC3F2fUH7vHZJRd_TiM5CiHjZDM9N7re_PfIjpsRhTPlCQrix0TtLuQ/exec';
+  
 
-    // mostrar SUCCESS al toque para que lo veas
+  
     var overlay = showCenterSuccess('Thanks! We’ve received your info.');
 
     fetch(ENDPOINT, {
@@ -164,21 +162,18 @@ if (signupForm) {
     }).finally(function () {
 
       setTimeout(function () {
-        // quitar overlay
         if (overlay) overlay.remove();
-
-        // cerrar offcanvas
         var drawer = document.getElementById('signupDrawer');
         if (drawer) {
           var off = bootstrap.Offcanvas.getInstance(drawer) || new bootstrap.Offcanvas(drawer);
           off.hide();
         }
 
-        // reset form
+  
         signupForm.reset();
         signupForm.classList.remove('was-validated');
 
-        // reset selects tipo Fiverr
+
         document.querySelectorAll('.ss-multi-toggle').forEach(function (t) {
           t.textContent = 'Select…';
         });
@@ -194,7 +189,7 @@ if (signupForm) {
         if (premiumHidden) premiumHidden.value = 'no';
         if (premiumStatusText) premiumStatusText.textContent = 'Current: Early access only';
 
-      }, 1500);
+      }, 2000);
     });
   });
 }
