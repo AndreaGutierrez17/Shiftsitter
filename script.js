@@ -1,3 +1,5 @@
+// ========== ShiftSitter JS ==========
+
 // 1) Cerrar navbar en móvil
 document.querySelectorAll('.navbar .nav-link').forEach(function (link) {
   link.addEventListener('click', function () {
@@ -41,7 +43,7 @@ if (y) y.textContent = new Date().getFullYear();
   setInterval(tick, 1000);
 })();
 
-// 4) MULTI tipo Fiverr (ages + challenges)
+// 4) MULTI tipo Fiverr (usa tus .ss-multi y llena los hidden)
 function initMultiSelects() {
   var blocks = document.querySelectorAll('.ss-multi');
   blocks.forEach(function (blk) {
@@ -61,11 +63,14 @@ function initMultiSelects() {
         panel.querySelectorAll('input[type="checkbox"]').forEach(function (c) {
           if (c.checked) selected.push(c.value);
         });
+        // aquí se guarda lo seleccionado en el hidden
         hidden.value = selected.join(', ');
+        // y se muestra en el toggle
         toggle.textContent = selected.length ? selected.join(', ') : 'Select…';
       });
     });
 
+    // cerrar al dar click afuera
     document.addEventListener('click', function (ev) {
       if (!blk.contains(ev.target)) panel.classList.remove('show');
     });
@@ -73,7 +78,7 @@ function initMultiSelects() {
 }
 initMultiSelects();
 
-// 5) Premium modal
+// 5) Premium modal → poner valor en hidden
 var premiumHidden = document.getElementById('premiumHidden');
 var premiumStatusText = document.getElementById('premiumStatusText');
 var savePremiumBtn = document.getElementById('savePremiumBtn');
@@ -91,7 +96,19 @@ if (savePremiumBtn) {
   });
 }
 
-// ✅ Mensaje centrado con animación
+// 6) Estilos de animación para el overlay
+const styleAnim = document.createElement('style');
+styleAnim.textContent = `
+@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+@keyframes fadeOut { from {opacity: 1;} to {opacity: 0;} }
+@keyframes popIn {
+  0% {transform: scale(0.9); opacity: 0;}
+  80% {transform: scale(1.05); opacity: 1;}
+  100% {transform: scale(1); opacity: 1;}
+}`;
+document.head.appendChild(styleAnim);
+
+// 7) Overlay de éxito centrado
 function showCenterSuccess(msg) {
   var old = document.getElementById('ss-success-overlay');
   if (old) old.remove();
@@ -133,37 +150,27 @@ function showCenterSuccess(msg) {
   wrap.appendChild(box);
   document.body.appendChild(wrap);
 
-  // auto quitar después de 2.2s
   setTimeout(() => {
     wrap.style.animation = 'fadeOut .3s ease-in forwards';
     setTimeout(() => wrap.remove(), 400);
   }, 2200);
 }
 
-// Animaciones
-const styleAnim = document.createElement('style');
-styleAnim.textContent = `
-@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
-@keyframes fadeOut { from {opacity: 1;} to {opacity: 0;} }
-@keyframes popIn {
-  0% {transform: scale(0.9); opacity: 0;}
-  80% {transform: scale(1.05); opacity: 1;}
-  100% {transform: scale(1); opacity: 1;}
-}`;
-document.head.appendChild(styleAnim);
-
-// 6) FORM
+// 8) FORM
 var signupForm = document.getElementById('signupForm');
 if (signupForm) {
   signupForm.addEventListener('submit', function (e) {
     e.preventDefault();
 
+    // validación bootstrap
     if (!signupForm.checkValidity()) {
       signupForm.classList.add('was-validated');
       return;
     }
 
     var fd = new FormData(signupForm);
+
+    // OJO: aquí ya leemos tus HIDDEN
     var data = {
       name: fd.get('name') || '',
       email: fd.get('email') || '',
@@ -172,34 +179,52 @@ if (signupForm) {
       city: fd.get('city') || '',
       source: fd.get('source') || 'site',
       ref: fd.get('ref') || '',
+      ages: fd.get('ages') || '',          // viene del hidden
+      challenges: fd.get('challenges') || '', // viene del hidden
       premium: (premiumHidden && premiumHidden.value) ? premiumHidden.value : (fd.get('premium') || 'no'),
-      consent: fd.get('consent') ? '1' : '',
-      ages: fd.getAll('ages[]'),
-      challenges: fd.getAll('challenge[]')
+      consent: fd.get('consent') ? '1' : ''
     };
 
+    // TU URL publicada como app web
     var ENDPOINT = 'https://script.google.com/macros/s/AKfycbwTJRCZoW45VmnnC3F2fUH7vHZJRd_TiM5CiHjZDM9N7re_PfIjpsRhTPlCQrix0TtLuQ/exec';
 
-  
-    showCenterSuccess('✅ Thanks! We’ve received your info.');
+    // mostrar mensaje centrado
+    showCenterSuccess('Thanks! We’ve received your info.');
 
+    // mandar a Google
     fetch(ENDPOINT, {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     }).finally(function () {
-    
+
+      // cerrar offcanvas
+      var drawer = document.getElementById('signupDrawer');
+      if (drawer) {
+        var off = bootstrap.Offcanvas.getInstance(drawer) || new bootstrap.Offcanvas(drawer);
+        off.hide();
+      }
+
+      // reset form
       signupForm.reset();
       signupForm.classList.remove('was-validated');
-      document.querySelectorAll('.ss-multi-toggle').forEach(t => t.textContent = 'Select…');
-      document.querySelectorAll('.ss-multi-panel input[type="checkbox"]').forEach(c => (c.checked = false));
 
+      // reset multiselects
+      document.querySelectorAll('.ss-multi-toggle').forEach(function (t) {
+        t.textContent = 'Select…';
+      });
+      document.querySelectorAll('.ss-multi-panel input[type="checkbox"]').forEach(function (c) {
+        c.checked = false;
+      });
+
+      // reset hidden
       var agesHidden = document.getElementById('agesHidden');
       var challengesHidden = document.getElementById('challengesHidden');
       if (agesHidden) agesHidden.value = '';
       if (challengesHidden) challengesHidden.value = '';
 
+      // reset premium
       if (premiumHidden) premiumHidden.value = 'no';
       if (premiumStatusText) premiumStatusText.textContent = 'Current: Early access only';
     });
