@@ -185,7 +185,7 @@ if (signupForm) {
       consent: fd.get('consent') ? '1' : ''
     };
 
-    // TU URL publicada como app web
+    // URL publicada como app web
     var ENDPOINT = 'https://script.google.com/macros/s/AKfycbwTJRCZoW45VmnnC3F2fUH7vHZJRd_TiM5CiHjZDM9N7re_PfIjpsRhTPlCQrix0TtLuQ/exec';
 
     // mostrar mensaje centrado
@@ -230,3 +230,33 @@ if (signupForm) {
     });
   });
 }
+
+// === Solo Stripe redirect cuando eligen "Yes" en el modal ===
+(function () {
+  var saveBtn = document.getElementById('savePremiumBtn');
+  if (!saveBtn) return;
+
+  var STRIPE_LINK = 'https://buy.stripe.com/8x23cw2pc0zQ4DeaOldEs00'; // live
+
+  saveBtn.addEventListener('click', function () {
+    var yes = document.getElementById('premiumYes');
+    // si eligió YES, abre Stripe en nueva pestaña
+    if (yes && yes.checked) {
+      // mantenemos también el hidden para tu flujo actual
+      var premiumHidden = document.getElementById('premiumHidden');
+      if (premiumHidden) premiumHidden.value = 'yes';
+      var premiumStatusText = document.getElementById('premiumStatusText');
+      if (premiumStatusText) premiumStatusText.textContent = 'Current: Premium Founder Pass';
+
+      window.open(STRIPE_LINK, '_blank', 'noopener');
+    } else {
+      // se queda en Early Access
+      var premiumHiddenNo = document.getElementById('premiumHidden');
+      if (premiumHiddenNo) premiumHiddenNo.value = 'no';
+      var premiumStatus = document.getElementById('premiumStatusText');
+      if (premiumStatus) premiumStatus.textContent = 'Current: Early access only';
+    }
+  });
+})();
+
+// ========== End ShiftSitter JS ==========

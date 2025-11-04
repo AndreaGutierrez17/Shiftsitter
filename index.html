@@ -263,12 +263,10 @@
      id="signupDrawer"
      aria-labelledby="signupDrawerLabel">
   <div class="offcanvas-header">
-    <!-- AQUÍ estaba el error: NO debe llamarse signupForm -->
     <h5 class="offcanvas-title" id="signupDrawerLabel">Request Early Access</h5>
     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
   </div>
   <div class="offcanvas-body">
-    <!-- ESTE sí se llama signupForm -->
     <form id="signupForm" class="needs-validation" novalidate>
       <!-- hidden -->
       <input type="hidden" name="role" value="parent">
@@ -278,18 +276,21 @@
       <input type="hidden" name="challenges" id="challengesHidden" value="">
       <input type="hidden" name="premium" id="premiumHidden" value="no">
 
+      <!-- Name -->
       <div class="mb-3">
         <label class="form-label">Full name</label>
         <input type="text" class="form-control" name="name" placeholder="Jane Doe" required>
         <div class="invalid-feedback">Please enter your full name.</div>
       </div>
 
+      <!-- Email -->
       <div class="mb-3">
         <label class="form-label">Email</label>
         <input type="email" class="form-control" name="email" placeholder="jane@example.com" required>
         <div class="invalid-feedback">Enter a valid email.</div>
       </div>
 
+      <!-- Children -->
       <div class="mb-3">
         <label class="form-label">How many children?</label>
         <select class="form-select" name="children" required>
@@ -302,6 +303,33 @@
         <div class="invalid-feedback">Please select an option.</div>
       </div>
 
+      <!-- Ages MULTI -->
+      <div class="mb-3 ss-multi" data-target="agesHidden">
+        <label class="form-label">Age of your children</label>
+        <div class="ss-multi-toggle">Select ages…</div>
+        <div class="ss-multi-panel">
+          <label><input type="checkbox" name="ages[]" value="0–3"> 0–3</label>
+          <label><input type="checkbox" name="ages[]" value="4–7"> 4–7</label>
+          <label><input type="checkbox" name="ages[]" value="8–12"> 8–12</label>
+          <label><input type="checkbox" name="ages[]" value="13+"> 13+</label>
+        </div>
+        <small class="text-muted-strong d-block mt-1">You can select more than one.</small>
+      </div>
+
+      <!-- Challenges MULTI -->
+      <div class="mb-3 ss-multi" data-target="challengesHidden">
+        <label class="form-label">What’s your biggest childcare challenge?</label>
+        <div class="ss-multi-toggle">Select challenges…</div>
+        <div class="ss-multi-panel">
+          <label><input type="checkbox" name="challenge[]" value="Cost"> Cost</label>
+          <label><input type="checkbox" name="challenge[]" value="Schedule conflicts"> Schedule conflicts</label>
+          <label><input type="checkbox" name="challenge[]" value="Trust / safety"> Trust / safety</label>
+          <label><input type="checkbox" name="challenge[]" value="Availability"> Availability</label>
+          <label><input type="checkbox" name="challenge[]" value="Long shifts / irregular hours"> Long shifts / irregular hours</label>
+        </div>
+      </div>
+
+      <!-- State / City (después de Ages & Challenges) -->
       <div class="mb-3">
         <label class="form-label">State</label>
         <select class="form-select" name="state" id="stateSelect" required>
@@ -324,44 +352,18 @@
         </select>
       </div>
 
-      <!-- Ages MULTI, estilo Fiverr -->
-      <div class="mb-3 ss-multi" data-target="agesHidden">
-        <label class="form-label">Age of your children</label>
-        <div class="ss-multi-toggle">Select ages…</div>
-        <div class="ss-multi-panel">
-          <!-- AQUÍ estaba el otro error: sin name -->
-          <label><input type="checkbox" name="ages[]" value="0–3"> 0–3</label>
-          <label><input type="checkbox" name="ages[]" value="4–7"> 4–7</label>
-          <label><input type="checkbox" name="ages[]" value="8–12"> 8–12</label>
-          <label><input type="checkbox" name="ages[]" value="13+"> 13+</label>
-        </div>
-        <small class="text-muted-strong d-block mt-1">You can select more than one.</small>
-      </div>
-
-      <!-- Challenges MULTI -->
-      <div class="mb-3 ss-multi" data-target="challengesHidden">
-        <label class="form-label">What’s your biggest childcare challenge?</label>
-        <div class="ss-multi-toggle">Select challenges…</div>
-        <div class="ss-multi-panel">
-          <label><input type="checkbox" name="challenge[]" value="Cost"> Cost</label>
-          <label><input type="checkbox" name="challenge[]" value="Schedule conflicts"> Schedule conflicts</label>
-          <label><input type="checkbox" name="challenge[]" value="Trust / safety"> Trust / safety</label>
-          <label><input type="checkbox" name="challenge[]" value="Availability"> Availability</label>
-          <label><input type="checkbox" name="challenge[]" value="Long shifts / irregular hours"> Long shifts / irregular hours</label>
-        </div>
-      </div>
-
-      <!-- Premium como modal -->
+      <!-- Premium (texto del botón ajustado) -->
       <div class="mb-3">
         <label class="form-label d-flex justify-content-between align-items-center">
           Premium Founder Pass ($29)
           <button type="button" class="btn btn-sm btn-outline-light" data-bs-toggle="modal" data-bs-target="#premiumModal">
-            Choose
+            Go Premium — $29
           </button>
         </label>
         <small id="premiumStatusText" class="text-muted-strong">Current: Early access only</small>
       </div>
 
+      <!-- Consent -->
       <div class="mb-3 form-check">
         <input class="form-check-input" type="checkbox" value="1" id="consent" name="consent" required>
         <label class="form-check-label" for="consent">
@@ -381,7 +383,7 @@
   </div>
 </div>
 
-<!-- MODAL PREMIUM -->
+<!-- MODAL PREMIUM (sin cambios de IDs; solo se usa para decidir y redirigir) -->
 <div class="modal fade" id="premiumModal" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content bg-dark text-white">
@@ -395,7 +397,7 @@
         </p>
         <div class="form-check mb-2">
           <input class="form-check-input" type="radio" name="premiumChoice" id="premiumYes" value="yes">
-          <label class="form-check-label" for="premiumYes">Yes, add me to Premium</label>
+          <label class="form-check-label" for="premiumYes">Yes, add me to Premium — $29</label>
         </div>
         <div class="form-check">
           <input class="form-check-input" type="radio" name="premiumChoice" id="premiumNo" value="no" checked>
@@ -409,6 +411,7 @@
   </div>
 </div>
 
+  <!-- =============== MODALS LEGALES =============== -->
 
 <!-- Privacy Policy Modal -->
 <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
