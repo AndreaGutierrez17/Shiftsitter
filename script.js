@@ -186,7 +186,7 @@ if (signupForm) {
     };
 
     // URL publicada como app web
-    var ENDPOINT = 'https://script.google.com/macros/s/AKfycbwLJA48-q98bxuL0M_Z_Yj_HDGExB2B4I35naQLx1QEdJMYFuK7REHzMgCSBIbi_AJsUw/exec';
+    var ENDPOINT = 'https://script.google.com/macros/s/AKfycby2IlTf84SzYJHv1oz0a7Y7fSc1JMOhyGuBS-TRgB2QZUb1tp8_OXdU0gVcVR0GCVybgw/exec';
 
     // mostrar mensaje centrado
     showCenterSuccess('Thanks! We’ve received your info.');
