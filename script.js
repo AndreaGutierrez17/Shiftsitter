@@ -1,6 +1,6 @@
 // ========== ShiftSitter JS ==========
 
-// 1) Cerrar navbar en móvil
+
 document.querySelectorAll('.navbar .nav-link').forEach(function (link) {
   link.addEventListener('click', function () {
     var nav = document.getElementById('navMain');
@@ -11,7 +11,7 @@ document.querySelectorAll('.navbar .nav-link').forEach(function (link) {
   });
 });
 
-// 2) Año en footer
+
 var y = document.getElementById('year');
 if (y) y.textContent = new Date().getFullYear();
 
@@ -43,7 +43,7 @@ if (y) y.textContent = new Date().getFullYear();
   setInterval(tick, 1000);
 })();
 
-// 4) MULTI tipo Fiverr (usa tus .ss-multi y llena los hidden)
+
 function initMultiSelects() {
   var blocks = document.querySelectorAll('.ss-multi');
   blocks.forEach(function (blk) {
@@ -63,14 +63,14 @@ function initMultiSelects() {
         panel.querySelectorAll('input[type="checkbox"]').forEach(function (c) {
           if (c.checked) selected.push(c.value);
         });
-        // aquí se guarda lo seleccionado en el hidden
+      
         hidden.value = selected.join(', ');
-        // y se muestra en el toggle
+      
         toggle.textContent = selected.length ? selected.join(', ') : 'Select…';
       });
     });
 
-    // cerrar al dar click afuera
+    
     document.addEventListener('click', function (ev) {
       if (!blk.contains(ev.target)) panel.classList.remove('show');
     });
@@ -78,7 +78,7 @@ function initMultiSelects() {
 }
 initMultiSelects();
 
-// 5) Premium modal → poner valor en hidden
+
 var premiumHidden = document.getElementById('premiumHidden');
 var premiumStatusText = document.getElementById('premiumStatusText');
 var savePremiumBtn = document.getElementById('savePremiumBtn');
@@ -96,7 +96,7 @@ if (savePremiumBtn) {
   });
 }
 
-// 6) Estilos de animación para el overlay
+
 const styleAnim = document.createElement('style');
 styleAnim.textContent = `
 @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
@@ -108,7 +108,7 @@ styleAnim.textContent = `
 }`;
 document.head.appendChild(styleAnim);
 
-// 7) Overlay de éxito centrado
+
 function showCenterSuccess(msg) {
   var old = document.getElementById('ss-success-overlay');
   if (old) old.remove();
@@ -170,7 +170,7 @@ if (signupForm) {
 
     var fd = new FormData(signupForm);
 
-    // OJO: aquí ya leemos tus HIDDEN
+    
     var data = {
       name: fd.get('name') || '',
       email: fd.get('email') || '',
@@ -179,8 +179,8 @@ if (signupForm) {
       city: fd.get('city') || '',
       source: fd.get('source') || 'site',
       ref: fd.get('ref') || '',
-      ages: fd.get('ages') || '',          // viene del hidden
-      challenges: fd.get('challenges') || '', // viene del hidden
+      ages: fd.get('ages') || '',         
+      challenges: fd.get('challenges') || '', 
       premium: (premiumHidden && premiumHidden.value) ? premiumHidden.value : (fd.get('premium') || 'no'),
       consent: fd.get('consent') ? '1' : ''
     };
@@ -199,18 +199,18 @@ if (signupForm) {
       body: JSON.stringify(data)
     }).finally(function () {
 
-      // cerrar offcanvas
+      
       var drawer = document.getElementById('signupDrawer');
       if (drawer) {
         var off = bootstrap.Offcanvas.getInstance(drawer) || new bootstrap.Offcanvas(drawer);
         off.hide();
       }
 
-      // reset form
+      
       signupForm.reset();
       signupForm.classList.remove('was-validated');
 
-      // reset multiselects
+    
       document.querySelectorAll('.ss-multi-toggle').forEach(function (t) {
         t.textContent = 'Select…';
       });
@@ -218,7 +218,7 @@ if (signupForm) {
         c.checked = false;
       });
 
-      // reset hidden
+      
       var agesHidden = document.getElementById('agesHidden');
       var challengesHidden = document.getElementById('challengesHidden');
       if (agesHidden) agesHidden.value = '';
@@ -231,7 +231,7 @@ if (signupForm) {
   });
 }
 
-// === Solo Stripe redirect cuando eligen "Yes" en el modal ===
+
 (function () {
   var saveBtn = document.getElementById('savePremiumBtn');
   if (!saveBtn) return;
@@ -240,9 +240,8 @@ if (signupForm) {
 
   saveBtn.addEventListener('click', function () {
     var yes = document.getElementById('premiumYes');
-    // si eligió YES, abre Stripe en nueva pestaña
+  
     if (yes && yes.checked) {
-      // mantenemos también el hidden para tu flujo actual
       var premiumHidden = document.getElementById('premiumHidden');
       if (premiumHidden) premiumHidden.value = 'yes';
       var premiumStatusText = document.getElementById('premiumStatusText');
@@ -250,7 +249,7 @@ if (signupForm) {
 
       window.open(STRIPE_LINK, '_blank', 'noopener');
     } else {
-      // se queda en Early Access
+      
       var premiumHiddenNo = document.getElementById('premiumHidden');
       if (premiumHiddenNo) premiumHiddenNo.value = 'no';
       var premiumStatus = document.getElementById('premiumStatusText');
