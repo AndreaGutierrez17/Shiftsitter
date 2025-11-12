@@ -541,3 +541,31 @@ body, p, .text-muted-strong{ color: var(--ink) !important; }
 .navbar .dropdown-menu{border-radius:14px;border:1px solid var(--cream-2);}
 .navbar .dropdown-item i{color:var(--teal);}
 .navbar .dropdown-item:hover{background:var(--cream);}
+
+/* === HERO fine-tune per John === */
+.hero .hero-badge{ transform: translateY(-6px); }
+.hero .hero-title{ margin-top:.15rem; }
+.hero .hero-tagline{
+  margin-top:.25rem;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#ffffff;
+  text-shadow:0 1px 8px rgba(0,0,0,.35);
+}
+
+/* Asegurar legibilidad sobre la imagen */
+header.hero h1{ text-shadow:0 2px 14px rgba(0,0,0,.25); }
+header.hero .lead,
+header.hero p.text-muted-strong{ text-shadow:0 1px 8px rgba(0,0,0,.35); }
+
+/* Mobile: que el tagline siempre se vea y no rompa */
+@media (max-width: 575.98px){
+  .hero .hero-tagline{ font-size:.95rem; }
+  .hero .hero-badge{ transform: translateY(-4px); }
+}
+
+/* Tagline en blanco puro */
+.hero .hero-tagline {
+  color: #ffffff !important;
+}

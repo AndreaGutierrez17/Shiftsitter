@@ -310,4 +310,16 @@ if (signupForm) {
     }
   });
 
+
+  // habilitar dropdown en móvil (tap)
+  document.querySelectorAll('.dropdown-toggle').forEach(el => {
+    el.addEventListener('touchstart', function(e){
+      const menu = this.nextElementSibling;
+      if(menu && menu.classList.contains('dropdown-menu')){
+        e.preventDefault();
+        menu.classList.toggle('show');
+      }
+    });
+  });
+
 // ========== End ShiftSitter JS ==========
