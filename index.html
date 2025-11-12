@@ -88,28 +88,48 @@
 
       <div class="collapse navbar-collapse" id="navMain">
         <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
-          <li class="nav-item"><a class="nav-link" href="#how">How it works</a></li>
-          <li class="nav-item"><a class="nav-link" href="#partners">Partners</a></li>
-          <li class="nav-item ms-lg-3">
-            <button class="btn btn-primary rounded-4" data-bs-toggle="offcanvas" data-bs-target="#signupDrawer">Request Early Access</button>
-          </li>
-        </ul>
+  <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+  <li class="nav-item"><a class="nav-link" href="#how">How it works</a></li>
+  <li class="nav-item"><a class="nav-link" href="#partners">Partners</a></li>
+
+  <!-- Dropdown: Get Started -->
+  <li class="nav-item dropdown ms-lg-2">
+    <a class="nav-link dropdown-toggle" href="#" id="getStartedMenu"
+       role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Get Started
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="getStartedMenu">
+      <!-- Parents -->
+      <li>
+        <a class="dropdown-item d-flex align-items-center gap-2"
+           href="#signupDrawer" data-bs-toggle="offcanvas" data-role="parent">
+          <i class="bi bi-people"></i><span>For Parents</span>
+        </a>
+      </li>
+      <li><hr class="dropdown-divider"></li>
+      <!-- Employers / CSR -->
+      <li>
+        <a class="dropdown-item d-flex align-items-center gap-2"
+           href="#partnerDrawer" data-bs-toggle="offcanvas" data-role="partner">
+          <i class="bi bi-building"></i><span>For Employers & CSR</span>
+        </a>
+      </li>
+    </ul>
+  </li>
       </div>
     </div>
   </nav>
 
   <!-- HERO -->
   <header class="hero position-relative text-center text-light">
-    <img src="img/ShiftSitter.jpeg" class="hero-bg" alt="Parents and kids at a playground"> <!-- Ruta de imagen HERO -->
+    <img src="img/who-shiftsitter.jpeg" class="hero-bg" alt="Parents and kids at a playground"> <!-- Ruta de imagen HERO -->
     <div class="hero-overlay"></div>
+    <br> <br> <br>
 
     <div class="container position-relative py-5">
       <span class="badge bg-badge rounded-pill px-3 py-2 mb-3"><i class="bi bi-geo-alt me-2"></i>Launching First in Maryland</span>
       <h1 class="display-4 fw-extrabold mb-3">ShiftSitter</h1>
-      <p class="lead text-muted-strong mx-auto" style="max-width: 760px;">
-        Smart, verified reciprocal childcare for shift-working families — Advance pairing algorithms, schedule and lifestyle sync, background checks, and local matches.
-      </p>
+    
 
       <!-- Countdown -->
       <div id="countdown" class="countdown mt-4 mb-4" aria-live="polite">Loading…</div>
@@ -123,37 +143,89 @@
       <p class="mt-3 text-muted-strong">Be among the frist to build a <strong>ShiftSitter</strong> community.</p>
     </div>
   </header>
+
+   <!-- Maryland note -->
+<section class="py-5">
+  <div class="container">
+    <div class="alert alert-dark border-0 bg-note text-note note-band shadow-soft">
+      <div class="d-flex align-items-start align-items-md-center flex-column flex-md-row gap-3">
+        <!-- Icono principal -->
+        <span class="note-icon flex-shrink-0" aria-hidden="true">
+          <i class="bi bi-geo-alt-fill"></i>
+        </span>
+
+        <div class="flex-grow-1">
+          <div class="d-flex flex-wrap align-items-center gap-2">
+            <strong class="note-title">Launching First in Maryland!</strong>
+            <span class="badge rounded-pill note-badge">Local First</span>
+            <span class="badge rounded-pill note-badge">Verified</span>
+            <span class="badge rounded-pill note-badge">Community</span>
+          </div>
+
+          <p class="mb-2 mt-2 mb-md-0">
+            We’re starting locally to build strong community support.
+            Not in Maryland? Join the waitlist to be notified when we launch in your state.
+          </p>
+
+          <!-- Mini chips con métricas/valor -->
+          <div class="d-flex flex-wrap gap-2 mt-2">
+            <span class="note-chip"><i class="bi bi-shield-check me-1"></i> ID & Safety</span>
+            <span class="note-chip"><i class="bi bi-people-heart me-1"></i> Parent-to-Parent</span>
+            <span class="note-chip"><i class="bi bi-clock-history me-1"></i> Shift-Friendly</span>
+          </div>
+        </div>
+
+        <!-- CTA lateral (opcional) -->
+        <div class="ms-md-3 mt-2 mt-md-0">
+          <a class="btn btn-primary btn-sm rounded-5 px-3" data-bs-toggle="offcanvas" href="#signupDrawer">
+            Join Waitlist
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
   
   <!-- FEATURES -->
 <section id="features" class="py-5">
   <div class="container">
     <h2 class="text-center mb-4 features-title">Features</h2>
+
     <div class="row g-4">
+      <!-- Trusted & Safe -->
       <div class="col-md-4">
-        <div class="card card-dark p-4 h-100 text-center">
-          <i class="bi bi-shield-check fs-2 icon-feature mb-2"></i>
+        <div class="card feature-card accent-1 p-4 h-100 text-center">
+          <span class="icon-badge-xl mb-3">
+            <i class="bi bi-shield-check"></i>
+          </span>
           <h5 class="feature-heading">Trusted &amp; Safe</h5>
-          <p class="text-muted-strong">
+          <p class="text-muted-strong mb-0">
             ID verification, checks, geo-fencing and roaming safeguards.
           </p>
         </div>
       </div>
 
+      <!-- Schedule Sync -->
       <div class="col-md-4">
-        <div class="card card-dark p-4 h-100 text-center">
-          <i class="bi bi-clock-history fs-2 icon-feature mb-2"></i>
+        <div class="card feature-card accent-2 p-4 h-100 text-center">
+          <span class="icon-badge-xl mb-3">
+            <i class="bi bi-calendar2-week"></i>
+          </span>
           <h5 class="feature-heading">Schedule Sync</h5>
-          <p class="text-muted-strong">
+          <p class="text-muted-strong mb-0">
             Real-time pairing by shift availability and proximity.
           </p>
         </div>
       </div>
 
+      <!-- Local Reciprocity -->
       <div class="col-md-4">
-        <div class="card card-dark p-4 h-100 text-center">
-          <i class="bi bi-diagram-2 fs-2 icon-feature mb-2"></i>
+        <div class="card feature-card accent-3 p-4 h-100 text-center">
+          <span class="icon-badge-xl mb-3">
+            <i class="bi bi-people"></i>
+          </span>
           <h5 class="feature-heading">Local Reciprocity</h5>
-          <p class="text-muted-strong">
+          <p class="text-muted-strong mb-0">
             Parents helping parents.
           </p>
         </div>
@@ -162,63 +234,82 @@
   </div>
 </section>
 
-  <!-- HOW -->
-  <section id="how" class="py-5">
-    <div class="container">
-      <div class="row g-4 align-items-center">
-        <div class="col-lg-6">
-          <div class="card card-dark p-4">
-            <div class="d-flex align-items-center gap-2 mb-2">
-              <i class="bi bi-diagram-3 fs-4 text-primary"></i>
-              <h3 class="m-0">How it works</h3>
-            </div>
-            <p class="mb-2 text-muted-strong">Parents supporting parents - be matches with nearby mums and dads like you and enter into a reciprocal caregiving arrangement that fits your schedule and lifestyle.</p>
-            <p class="mb-0 text-muted-strong">No cost, just smart matching.</p>
+<!-- HOW -->
+<section id="how" class="py-5">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      
+      <!-- Text / Card -->
+      <div class="col-lg-6">
+        <div class="card feature-card accent-2 p-4 h-100">
+          <div class="text-center mb-3">
+            <span class="icon-badge-xl">
+              <i class="bi bi-heart-pulse-fill"></i>
+            </span>
           </div>
-        </div>
-        <div class="col-lg-6">
-          <img src="img/who-shiftsitter.jpeg" class="img-fluid rounded-4 shadow-soft" alt="Parent network illustration"> <!-- Ruta imagen sección -->
+          <h3 class="text-center mb-3">How it Works</h3>
+          <p class="mb-2 text-muted-strong text-center">
+            Parents supporting parents — be <strong>matched</strong> with nearby mums and dads like you and enter into a reciprocal caregiving arrangement that fits your schedule and lifestyle.
+          </p>
+          <p class="mb-0 text-muted-strong text-center">
+            <strong>No cost</strong>, just smart matching and shared trust.
+          </p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Maryland note -->
-  <section class="py-5">
-    <div class="container">
-      <div class="alert alert-dark border-0 bg-note text-note">
-        <strong>Launching First in Maryland!</strong>
-        <span class="ms-2">We’re starting locally to build strong community support. Not in Maryland? Join the waitlist to be notified when we launch in your state.</span>
+      <!-- Image -->
+      <div class="col-lg-6">
+        <img src="img/ShiftSitter.jpeg" class="img-fluid rounded-4 shadow-soft" alt="Parents helping parents illustration">
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
 <!-- ===== EMPLOYERS & CSR PARTNERS ===== -->
-  <section id="partners" class="py-5 section-deep">
-    <div class="container">
-      <div class="row align-items-center g-4">
-        <div class="col-lg-6">
-          <h2 class="fw-800"><i class="bi bi-building me-2 text-accent"></i>For Employers & CSR Partners</h2>
-          <p class="mb-1"><em>Support the people who support everyone else.</em></p>
-          <p class="mb-3">
-        provide 12-month platform access for your workforce, or sponsor local shift-working parents to help them find trusted, reciprocal childcare within their community.
-          </p>
-          <ul class="list-unstyled small mb-3">
-            <li><i class="bi bi-graph-up-arrow me-2 text-success"></i> Every $1,000 in sponsorship helps 50+ families stay in the workforce</li>
-            <li><i class="bi bi-clock-history me-2 text-success"></i> Reduces absenteeism by up to 30%</li>
-            <li><i class="bi bi-cash-coin me-2 text-success"></i> Retains an estimated $250K+ value per 100 employees supported</li>
-          </ul>
-          <a class="btn btn-primary-soft" data-bs-toggle="offcanvas" href="#signupDrawer" data-role="partner">
-            Become a Sponsor
-          </a>
+<section id="partners" class="py-5 section-deep">
+  <div class="container">
+    <div class="row align-items-center g-4">
+
+      <!-- Texto -->
+      <div class="col-lg-6">
+        <div class="d-flex align-items-center mb-3">
+          <img src="img/logo-shiftsitter.png" alt="ShiftSitter logo" class="me-2 partner-logo">
+          <h2 class="fw-800 m-0 text-accent">For Employers & CSR Partners</h2>
         </div>
-        <div class="col-lg-6">
-          <!-- Imagen sección (ruta editable) -->
-          <img src="img/Employers supporting families.jpeg" alt="Employers supporting families" class="img-fluid rounded shadow-soft">
-        </div>
+
+        <p class="mb-1"><em>Support the people who support everyone else.</em></p>
+        <p class="mb-3">
+          Provide 12-month platform access for your workforce, or sponsor local shift-working parents to help them find trusted, reciprocal childcare within their community.
+        </p>
+
+        <ul class="list-unstyled small mb-3">
+          <li class="feature-bullet">
+            <i class="bi bi-graph-up-arrow"></i>
+            <span>Every $1,000 in sponsorship helps 50+ families stay in the workforce</span>
+          </li>
+          <li class="feature-bullet">
+            <i class="bi bi-people-fill"></i>
+            <span>Reduces absenteeism by up to 30%</span>
+          </li>
+          <li class="feature-bullet">
+            <i class="bi bi-heart-pulse-fill"></i>
+            <span>Retains an estimated $250K+ value per 100 employees supported</span>
+          </li>
+        </ul>
+
+      <a class="btn btn-primary-soft" data-bs-toggle="offcanvas" href="#partnerDrawer" role="button" aria-controls="partnerDrawer">
+           Become a Sponsor
+           </a>
+            </div>
+
+      <!-- Imagen -->
+      <div class="col-lg-6">
+        <img src="img/Employers supporting families.jpeg" alt="Employers supporting families" class="img-fluid rounded shadow-soft">
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
  <footer class="footer-ss py-4 border-top border-secondary-subtle bg-dark text-white text-center">
   <div class="container">
@@ -243,17 +334,26 @@
     </div>
 
     <!-- REDES -->
-    <div class="mb-2 footer-social">
-      <a href="https://www.instagram.com/shiftsitterofficial?igsh=cm80MG83eDBtcjlw" target="_blank" class="footer-icon"><i class="bi bi-instagram"></i></a>
-      <a href="https://x.com/ShiftSitterHQ" target="_blank" class="footer-icon"><i class="bi bi-twitter-x"></i></a>
-      <a href="https://www.facebook.com/share/17kYbNJrEE/" target="_blank" class="footer-icon"><i class="bi bi-facebook"></i></a>
-      <a href="https://www.linkedin.com/company/shiftsitter/" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+ <!-- REDES -->
+<div class="mb-2 footer-social">
+  <a href="https://www.instagram.com/shiftsitterofficial?igsh=cm80MG83eDBtcjlw" target="_blank" class="footer-icon">
+    <i class="bi bi-instagram"></i>
+  </a>
+  <a href="https://x.com/ShiftSitterHQ" target="_blank" class="footer-icon">
+    <i class="bi bi-twitter-x"></i>
+  </a>
+  <a href="https://www.facebook.com/share/17kYbNJrEE/" target="_blank" class="footer-icon">
+    <i class="bi bi-facebook"></i>
+  </a>
+  <a href="https://www.linkedin.com/company/shiftsitter/" target="_blank" class="footer-icon" aria-label="LinkedIn">
+    <i class="bi bi-linkedin"></i>
+  </a>
+</div>
 
-    <!-- COPYRIGHT -->
-    <div class="small text-white-50">
-      © <span id="year"></span> ShiftSitter. All rights reserved.
-    </div>
-  </div>
+<!-- COPYRIGHT -->
+<div class="small text-white-50">
+  © <span id="year"></span> ShiftSitter. All rights reserved.
+</div>
 </footer>
 
 
@@ -410,6 +510,106 @@
   </div>
 </div>
 
+
+<!-- =============== OFFCANVAS FORM — PARTNERS =============== -->
+<div class="offcanvas offcanvas-end bg-offcanvas text-white"
+     tabindex="-1"
+     id="partnerDrawer"
+     aria-labelledby="partnerDrawerLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="partnerDrawerLabel">Employer & CSR Partner</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+
+  <div class="offcanvas-body">
+    <form id="partnerForm" class="needs-validation" novalidate>
+      <!-- hidden -->
+      <input type="hidden" name="role" value="partner">
+      <input type="hidden" name="source" value="site">
+      <input type="hidden" name="ref" id="refPartner" value="">
+
+      <!-- Company -->
+      <div class="mb-3">
+        <label class="form-label">Company / Organization</label>
+        <input type="text" class="form-control" name="company" placeholder="Acme Health, Inc." required>
+        <div class="invalid-feedback">Please enter the company name.</div>
+      </div>
+
+      <!-- Contact name -->
+      <div class="mb-3">
+        <label class="form-label">Contact name</label>
+        <input type="text" class="form-control" name="name" placeholder="Jane Doe" required>
+        <div class="invalid-feedback">Please enter a name.</div>
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label class="form-label">Work email</label>
+        <input type="email" class="form-control" name="email" placeholder="jane@company.com" required>
+        <div class="invalid-feedback">Enter a valid email.</div>
+      </div>
+
+      <!-- Company size -->
+      <div class="mb-3">
+        <label class="form-label">Approx. employees impacted</label>
+        <select class="form-select" name="employees" required>
+          <option value="">Select…</option>
+          <option>1–25</option>
+          <option>26–100</option>
+          <option>101–500</option>
+          <option>500+</option>
+        </select>
+        <div class="invalid-feedback">Please choose an option.</div>
+      </div>
+
+      <!-- Interest -->
+      <div class="mb-3">
+        <label class="form-label">Interest</label>
+        <select class="form-select" name="interest" required>
+          <option value="">Select…</option>
+          <option value="Sponsorship">Sponsorship for local families</option>
+          <option value="Employee benefit">Employee benefit (12-month access)</option>
+          <option value="Both">Both</option>
+        </select>
+        <div class="invalid-feedback">Please choose an option.</div>
+      </div>
+
+      <!-- Message -->
+      <div class="mb-3">
+        <label class="form-label">Message (optional)</label>
+        <textarea class="form-control" name="message" rows="3" placeholder="Tell us a bit about your program or CSR goals…"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label d-flex justify-content-between align-items-center">
+          Premium Founder Pass ($29)
+          <button type="button" class="btn btn-sm btn-outline-light" data-bs-toggle="modal" data-bs-target="#premiumModal">
+            Go Premium — $29
+          </button>
+        </label>
+        <small id="premiumStatusText" class="text-muted-strong">Current: Early access only</small>
+      </div>
+
+      <!-- Consent -->
+      <div class="mb-3 form-check">
+        <input class="form-check-input" type="checkbox" value="1" id="consentPartner" name="consent" required>
+        <label class="form-check-label" for="consentPartner">
+          I agree to be contacted & accept the Privacy Policy.
+        </label>
+        <div class="invalid-feedback">You must agree before submitting.</div>
+      </div>
+
+      <button class="btn btn-primary w-100" type="submit">
+        <i class="bi bi-send me-1"></i> Request Partner Info
+      </button>
+
+      <p id="successMsgPartner" class="alert alert-success mt-3 d-none">
+        ✅ Thanks! We’ve received your request. We’ll reach out shortly.
+      </p>
+    </form>
+  </div>
+</div>
+
   <!-- =============== MODALS LEGALES =============== -->
 
 <!-- Privacy Policy Modal -->
@@ -465,21 +665,27 @@
 <!-- Contact Modal -->
 <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-md modal-dialog-centered">
-    <div class="modal-content bg-dark text-white">
-      <div class="modal-header">
-        <h5 class="modal-title" id="contactModalLabel">Contact ShiftSitter</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal-content bg-note text-note">
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold" id="contactModalLabel">Contact ShiftSitter</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+
       <div class="modal-body small">
-        <p class="text-white-50 mb-2">Email us at:</p>
-        <p><a href="mailto:shiftsittersocial406@gmail.com" class="link-light fw-semibold">shiftsittersocial406@gmail.com</a></p>
-        <p class="text-white-50 mb-1">or send a quick message:</p>
+        <p class="mb-2 text-muted-strong">Email us at:</p>
+        <p>
+          <a href="mailto:shiftsittersocial406@gmail.com" class="contact-email fw-semibold">
+            shiftsittersocial406@gmail.com
+          </a>
+        </p>
+        <p class="mb-1 text-muted-strong">or send a quick message:</p>
         <form onsubmit="window.location='mailto:shiftsittersocial406@gmail.com?subject=ShiftSitter%20contact&body='+encodeURIComponent(this.message.value); return false;">
           <textarea name="message" class="form-control mb-3" rows="3" placeholder="Your message…"></textarea>
           <button type="submit" class="btn btn-primary btn-sm w-100">Send</button>
         </form>
       </div>
-      <div class="modal-footer">
+
+      <div class="modal-footer border-0">
         <button type="button" class="btn btn-outline-light btn-sm" data-bs-dismiss="modal">Close</button>
       </div>
     </div>

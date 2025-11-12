@@ -1,9 +1,3 @@
-/* ===========================
-   SHIFT SITTER — THEME (NAVY + TEAL + CREAM)
-   SOLO CAMBIO DE PALETA + LEGIBILIDAD
-   =========================== */
-
-/* Paleta basada en el logo */
 :root{
   /* Colores base */
   --navy:#22314b;          /* azul marino principal (texto fuerte / headers) */
@@ -62,8 +56,6 @@ header.hero p.text-muted-strong{ color:#eaf2ff !important; font-weight:700; }
 .navbar .btn.btn-primary{ background: var(--teal); border-color: var(--teal); }
 .navbar .btn.btn-primary:hover{ background: var(--teal-2); border-color: var(--teal-2); }
 
-/* ===== LOGO ===== */
-.brand-logo{ height:40px; width:auto; filter: drop-shadow(0 2px 6px rgba(0,0,0,.15)); }
 @media (max-width: 991px){ .brand-logo{ height:44px; } }
 
 .fw-extrabold{ font-weight:800; }
@@ -305,3 +297,247 @@ body, p, .text-muted-strong{ color: var(--ink) !important; }
 /* --- fallback si usas toast bootstrap en lugar de sweetalert --- */
 .toast{background:#fff!important;color:var(--ink)!important;border:1px solid var(--cream-2)!important;}
 .toast .toast-header{background:#fff!important;color:var(--ink)!important;}
+
+/* ==== Feature cards con banda superior y sombra más marcada ==== */
+.feature-card{
+  background:#fff;
+  border:1px solid var(--cream-2);
+  border-radius:18px;
+  box-shadow:0 14px 32px rgba(34,49,75,.14);
+  position:relative;
+  overflow:hidden;
+  opacity:0; animation: fadeInUp .7s ease forwards;
+}
+.feature-card::before{
+  content:"";
+  position:absolute; inset:0 0 auto 0; height:6px;
+  background: linear-gradient(90deg, var(--teal), var(--teal-2));
+}
+.feature-card.accent-2::before{ filter:saturate(1.15) brightness(1.02); }
+.feature-card.accent-3::before{ filter:saturate(1.3) brightness(1.05); }
+
+/* ==== Icono: círculo sólido teal con anillo ==== */
+.icon-badge-xl{
+  width:78px; height:78px; display:grid; place-items:center;
+  margin-inline:auto;
+  border-radius:50%;
+  background:var(--teal);
+  color:#fff;
+  box-shadow:
+    0 10px 26px rgba(47,196,182,.35),
+    inset 0 -6px 12px rgba(0,0,0,.12);
+  border:3px solid #fff;
+  outline:2px solid var(--teal-2);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.icon-badge-xl i{ font-size:30px; line-height:1; }
+
+/* Hover notorio */
+.feature-card:hover .icon-badge-xl{
+  transform: translateY(-3px) scale(1.03);
+  box-shadow:
+    0 16px 36px rgba(47,196,182,.45),
+    inset 0 -8px 14px rgba(0,0,0,.14);
+}
+
+/* Ajustes de tipografía para más contraste */
+#features .feature-heading{
+  color: var(--navy) !important;
+  font-weight:900 !important;
+  letter-spacing:.2px;
+  margin-bottom:.35rem;
+}
+#features p{ color: var(--ink-2); }
+
+/* Escalonado de entrada */
+#features .col-md-4:nth-child(1) .feature-card{ animation-delay:.12s; }
+#features .col-md-4:nth-child(2) .feature-card{ animation-delay:.28s; }
+#features .col-md-4:nth-child(3) .feature-card{ animation-delay:.44s; }
+
+/* --- How it works: icon heart teal --- */
+#how .icon-badge-xl{
+  background: var(--teal);
+  outline: 2px solid var(--teal-2);
+  border: 3px solid #fff;
+  box-shadow: 0 10px 26px rgba(47,196,182,.35);
+}
+#how .icon-badge-xl i{
+  color: #fff;
+  font-size: 32px;
+}
+#how .feature-card:hover .icon-badge-xl{
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 16px 36px rgba(47,196,182,.45);
+}
+#how h3{
+  color: var(--navy);
+  font-weight: 900;
+}
+
+/* ===== Maryland note — embellishments ===== */
+.note-band{ border:1px solid var(--cream-2); border-radius:16px; }
+.note-title{ color: var(--ink); font-size:1.05rem; }
+.note-icon{
+  display:inline-grid; place-items:center;
+  width:44px; height:44px; border-radius:12px;
+  background: var(--glass); color: var(--teal);
+  border:1px solid var(--cream-2);
+  box-shadow: 0 6px 14px rgba(47,196,182,.18);
+  font-size:20px;
+}
+.note-badge{
+  background:#fff; color: var(--teal); border:1px solid var(--cream-2);
+  font-weight:700; letter-spacing:.2px;
+}
+.note-chip{
+  display:inline-flex; align-items:center; gap:.25rem;
+  background:#fff; color: var(--ink);
+  border:1px solid var(--cream-2);
+  padding:.35rem .6rem; border-radius:999px; font-size:.85rem;
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.note-chip:hover{
+  transform: translateY(-1px);
+  border-color: rgba(47,196,182,.45);
+  box-shadow: 0 6px 16px rgba(34,49,75,.08);
+}
+
+/* ===== Employers & CSR Partners ===== */
+.partner-logo {
+  height: 42px;
+  width: auto;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.1));
+}
+
+.feature-bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+  color: var(--ink-2);
+  font-size: 0.97rem;
+}
+
+.feature-bullet i {
+  color: var(--teal);
+  font-size: 1.15rem;
+  background: var(--glass);
+  padding: 6px;
+  border-radius: 8px;
+  line-height: 1;
+  box-shadow: 0 4px 10px rgba(47,196,182,.2);
+  transition: all 0.2s ease;
+}
+
+.feature-bullet:hover i {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(47,196,182,.35);
+}
+
+/* ===== LOGO PRINCIPAL (Navbar) ===== */
+.navbar-brand img,
+.brand-logo {
+  height: 60px; /* antes 40px */
+  width: auto;
+  max-width: 100%;
+  transition: all 0.3s ease;
+  object-fit: contain;
+}
+
+/* Mantiene el menú centrado y evita romper layout */
+.navbar {
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  align-items: center;
+}
+
+/* En pantallas pequeñas el logo se reduce suavemente */
+@media (max-width: 991px) {
+  .navbar-brand img,
+  .brand-logo {
+    height: 52px;
+  }
+}
+
+/* ===== LOGO EN SECCIONES (como Employers & CSR Partners) ===== */
+.partner-logo {
+  height: 65px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 8px rgba(0,0,0,.12));
+}
+
+/* Ajuste automático si hay título al lado */
+@media (max-width: 768px) {
+  .partner-logo {
+    height: 58px;
+    margin-bottom: 8px;
+  }
+}
+
+/* ===== Contact Modal (versión clara) ===== */
+#contactModal .modal-content {
+  background: var(--cream) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--cream-2);
+  border-radius: 14px;
+  box-shadow: 0 12px 34px rgba(34,49,75,.18);
+}
+
+#contactModal .modal-title {
+  color: var(--ink);
+  font-weight: 900;
+}
+
+#contactModal .contact-email {
+  color: var(--teal) !important;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color .3s ease;
+}
+#contactModal .contact-email:hover {
+  color: var(--teal-2) !important;
+  text-decoration: underline;
+}
+
+#contactModal .form-control {
+  background: #fff;
+  color: var(--ink);
+  border: 1px solid var(--cream-2);
+}
+#contactModal .form-control::placeholder {
+  color: #8b93a3;
+}
+#contactModal .btn-outline-light {
+  color: var(--teal);
+  border-color: var(--teal);
+}
+#contactModal .btn-outline-light:hover {
+  background: var(--teal);
+  color: #fff;
+}
+
+.footer-ss .footer-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid var(--cream-2);
+  color: var(--teal);
+  margin: 0 3px;
+  transition: all 0.3s ease;
+}
+
+.footer-ss .footer-icon:hover {
+  background: var(--cream);
+  color: var(--teal-2);
+  transform: translateY(-2px);
+}
+
+.navbar .dropdown-menu{border-radius:14px;border:1px solid var(--cream-2);}
+.navbar .dropdown-item i{color:var(--teal);}
+.navbar .dropdown-item:hover{background:var(--cream);}

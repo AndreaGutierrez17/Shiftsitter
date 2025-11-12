@@ -258,4 +258,56 @@ if (signupForm) {
   });
 })();
 
+  // Valida Bootstrap
+  (function(){
+    const forms = document.querySelectorAll('.needs-validation');
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', e => {
+        if (!form.checkValidity()) { e.preventDefault(); e.stopPropagation(); }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  })();
+
+  // Helper: serializa form a objeto
+  function formToJSON(form){
+    const data = new FormData(form);
+    const obj = {};
+    data.forEach((v,k) => {
+      if (obj[k] !== undefined){
+        if (!Array.isArray(obj[k])) obj[k] = [obj[k]];
+        obj[k].push(v);
+      } else {
+        obj[k] = v;
+      }
+    });
+    return obj;
+  }
+
+  // ===== PARTNER SUBMIT =====
+  document.getElementById('partnerForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    if (!this.checkValidity()) return;
+
+    const payload = formToJSON(this);
+    try {
+      // ⬇️ Usa el MISMO endpoint que ya ocupas para el waitlist
+      // Reemplaza URL si tu endpoint es otro:
+      const res = await fetch('https://script.google.com/macros/s/AKfycby2IlTf84SzYJHv1oz0a7Y7fSc1JMOhyGuBS-TRgB2QZUb1tp8_OXdU0gVcVR0GCVybgw/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!res.ok) throw new Error('Network error');
+
+      document.getElementById('successMsgPartner').classList.remove('d-none');
+      this.reset();
+      this.classList.remove('was-validated');
+    } catch(err){
+      alert('There was a problem sending your request. Please try again.');
+      console.error(err);
+    }
+  });
+
 // ========== End ShiftSitter JS ==========
