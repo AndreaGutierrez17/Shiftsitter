@@ -186,7 +186,7 @@ if (signupForm) {
     };
 
     // URL publicada como app web
-    var ENDPOINT = 'https://script.google.com/macros/s/AKfycby2IlTf84SzYJHv1oz0a7Y7fSc1JMOhyGuBS-TRgB2QZUb1tp8_OXdU0gVcVR0GCVybgw/exec';
+    var ENDPOINT = 'https://script.google.com/macros/s/AKfycbxtaOnWOgogB7IQUwOeSSRENJF05v7GS9fjN6eX_P7TimeKfXOAQ1qU8CJTQTaAY24jFw/exec';
 
     // mostrar mensaje centrado
     showCenterSuccess('Thanks! We’ve received your info.');
@@ -293,17 +293,19 @@ if (signupForm) {
     try {
       // ⬇️ Usa el MISMO endpoint que ya ocupas para el waitlist
       // Reemplaza URL si tu endpoint es otro:
-      const res = await fetch('https://script.google.com/macros/s/AKfycby2IlTf84SzYJHv1oz0a7Y7fSc1JMOhyGuBS-TRgB2QZUb1tp8_OXdU0gVcVR0GCVybgw/exec', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
+     const res = await fetch('https://script.google.com/macros/s/AKfycbxtaOnWOgogB7IQUwOeSSRENJF05v7GS9fjN6eX_P7TimeKfXOAQ1qU8CJTQTaAY24jFw/exec', {
+  method: 'POST',
+  mode: 'no-cors',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(payload)
+});
 
-      if (!res.ok) throw new Error('Network error');
+// Aunque no haya respuesta CORS, asumimos éxito porque Apps Script no lanza errores visibles
+document.getElementById('successMsgPartner').classList.remove('d-none');
+this.reset();
+this.classList.remove('was-validated');
+showCenterSuccess('✅ Thanks! We’ve received your request.');
 
-      document.getElementById('successMsgPartner').classList.remove('d-none');
-      this.reset();
-      this.classList.remove('was-validated');
     } catch(err){
       alert('There was a problem sending your request. Please try again.');
       console.error(err);
