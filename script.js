@@ -186,7 +186,7 @@ if (signupForm) {
     };
 
     // URL publicada como app web
-    var ENDPOINT = 'https://script.google.com/macros/s/AKfycbxtaOnWOgogB7IQUwOeSSRENJF05v7GS9fjN6eX_P7TimeKfXOAQ1qU8CJTQTaAY24jFw/exec';
+    var ENDPOINT = 'https://script.google.com/macros/s/AKfycbzEZYYnBNRW--KzDUrAy3SFCXv9uEZh35-LXM3CWtRdrMCnAPQMqXQql49DcDuPjJcj/exec';
 
     // mostrar mensaje centrado
     showCenterSuccess('Thanks! We’ve received your info.');
@@ -293,7 +293,7 @@ if (signupForm) {
     try {
       // ⬇️ Usa el MISMO endpoint que ya ocupas para el waitlist
       // Reemplaza URL si tu endpoint es otro:
-     const res = await fetch('https://script.google.com/macros/s/AKfycbxtaOnWOgogB7IQUwOeSSRENJF05v7GS9fjN6eX_P7TimeKfXOAQ1qU8CJTQTaAY24jFw/exec', {
+     const res = await fetch('https://script.google.com/macros/s/AKfycbzEZYYnBNRW--KzDUrAy3SFCXv9uEZh35-LXM3CWtRdrMCnAPQMqXQql49DcDuPjJcj/exec', {
   method: 'POST',
   mode: 'no-cors',
   headers: { 'Content-Type': 'application/json' },

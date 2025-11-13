@@ -570,26 +570,59 @@ header.hero p.text-muted-strong{ text-shadow:0 1px 8px rgba(0,0,0,.35); }
   color: #ffffff !important;
 }
 
-/* ===== AJUSTE HERO SOLO EN MÓVIL (como lo pidió John) ===== */
-@media (max-width: 768px){
+/* ===== AJUSTE HERO SOLO EN MÓVIL PARA QUE SE VEA LA CARITA ===== */
+@media (max-width: 767.98px) {
 
-  /* Subir todo el bloque del HERO */
   header.hero .container{
-    padding-top: 1.5rem !important;   /* SUBE todo */
+    padding-top: 3.2rem;      /* menos espacio arriba */
+    padding-bottom: 2.2rem;   /* menos espacio abajo */
+    transform: translateY(-6vh); /* sube todo el bloque (badge, título, countdown, botón) */
   }
 
-  /* Subir AÚN MÁS el badge "Launching First in Maryland" */
-  header.hero .badge{
-    margin-top: -1rem !important;      /* LO SUBE más arriba */
+  .hero-badge{
+    margin-bottom: .35rem;    /* menos separación debajo del badge */
   }
 
-  /* Subir el título ShiftSitter */
-  header.hero h1{
-    margin-top: -0.5rem !important;    /* SUBE el texto principal */
+  .hero-title{
+    margin-bottom: .25rem;
+    font-size: 2.1rem;        /* un poquito más compacto */
   }
 
-  /* Acomodar tagline debajo del título sin tapar ojos */
-  header.hero p.hero-tagline{
-    margin-top: -0.3rem !important;
+  .hero-tagline{
+    font-size: .82rem;
+    letter-spacing: .16em;
+    margin-bottom: .6rem;
   }
+
+  #countdown.countdown{
+    margin-top: .35rem;
+    margin-bottom: 1rem;      /* que no empuje tanto hacia abajo */
+  }
+
+  header.hero .btn.btn-primary{
+    margin-top: .2rem;
+  }
+
+  header.hero p.mt-3.text-muted-strong{
+    margin-top: .7rem;
+    font-size: .85rem;
+  }
+}
+
+/* ===== AJUSTE HERO SOLO EN MÓVIL — BAJAR LA CUENTA REGRESIVA ===== */
+@media (max-width: 767.98px) {
+
+  /* Subimos el bloque general igual que antes */
+  header.hero .container{
+    padding-top: 3.2rem;
+    padding-bottom: 2.2rem;
+    transform: translateY(-6vh);
+  }
+
+  /* Cuenta regresiva más ABAJO */
+  #countdown.countdown{
+    margin-top: 1.2rem !important;   /* antes .35rem */
+    margin-bottom: 1.4rem !important;
+  }
+
 }
