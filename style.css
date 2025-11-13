@@ -570,59 +570,44 @@ header.hero p.text-muted-strong{ text-shadow:0 1px 8px rgba(0,0,0,.35); }
   color: #ffffff !important;
 }
 
-/* ===== AJUSTE HERO SOLO EN MÓVIL PARA QUE SE VEA LA CARITA ===== */
-@media (max-width: 767.98px) {
+/* --- FIX HERO MOBILE EXACTO COMO LO QUIERES --- */
+@media (max-width: 768px) {
 
-  header.hero .container{
-    padding-top: 3.2rem;      /* menos espacio arriba */
-    padding-bottom: 2.2rem;   /* menos espacio abajo */
-    transform: translateY(-6vh); /* sube todo el bloque (badge, título, countdown, botón) */
+  .hero .container {
+    padding-top: 10px !important;   /* sube TODO */
+    padding-bottom: 0 !important;
   }
 
-  .hero-badge{
-    margin-bottom: .35rem;    /* menos separación debajo del badge */
+  .hero-badge {
+    margin-top: 0 !important;       /* badge arriba */
+    margin-bottom: 4px !important;
+    transform: translateY(-10px);   /* súbelo un poquito */
   }
 
-  .hero-title{
-    margin-bottom: .25rem;
-    font-size: 2.1rem;        /* un poquito más compacto */
+  .hero-title {
+    margin-top: 0 !important;
+    margin-bottom: 4px !important;
+    transform: translateY(-6px);    /* sube ShiftSitter */
   }
 
-  .hero-tagline{
-    font-size: .82rem;
-    letter-spacing: .16em;
-    margin-bottom: .6rem;
+  .hero-tagline {
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+    transform: translateY(-6px);    /* sube tagline */
   }
 
-  #countdown.countdown{
-    margin-top: .35rem;
-    margin-bottom: 1rem;      /* que no empuje tanto hacia abajo */
+  #countdown {
+    margin-top: 10px !important;    /* countdown MÁS ABAJO */
+    margin-bottom: 20px !important;
   }
 
-  header.hero .btn.btn-primary{
-    margin-top: .2rem;
+  .hero {
+    height: auto !important;
+    min-height: 560px !important;   /* evita el hueco blanco */
   }
 
-  header.hero p.mt-3.text-muted-strong{
-    margin-top: .7rem;
-    font-size: .85rem;
+  .hero-bg {
+    object-position: center 20% !important;  
+    /* mueve la imagen hacia ARRIBA para mostrar la carita */
   }
-}
-
-/* ===== AJUSTE HERO SOLO EN MÓVIL — BAJAR LA CUENTA REGRESIVA ===== */
-@media (max-width: 767.98px) {
-
-  /* Subimos el bloque general igual que antes */
-  header.hero .container{
-    padding-top: 3.2rem;
-    padding-bottom: 2.2rem;
-    transform: translateY(-6vh);
-  }
-
-  /* Cuenta regresiva más ABAJO */
-  #countdown.countdown{
-    margin-top: 1.2rem !important;   /* antes .35rem */
-    margin-bottom: 1.4rem !important;
-  }
-
 }
