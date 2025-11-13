@@ -570,3 +570,26 @@ header.hero p.text-muted-strong{ text-shadow:0 1px 8px rgba(0,0,0,.35); }
   color: #ffffff !important;
 }
 
+/* ===== AJUSTE HERO SOLO EN MÓVIL (como lo pidió John) ===== */
+@media (max-width: 768px){
+
+  /* Subir todo el bloque del HERO */
+  header.hero .container{
+    padding-top: 1.5rem !important;   /* SUBE todo */
+  }
+
+  /* Subir AÚN MÁS el badge "Launching First in Maryland" */
+  header.hero .badge{
+    margin-top: -1rem !important;      /* LO SUBE más arriba */
+  }
+
+  /* Subir el título ShiftSitter */
+  header.hero h1{
+    margin-top: -0.5rem !important;    /* SUBE el texto principal */
+  }
+
+  /* Acomodar tagline debajo del título sin tapar ojos */
+  header.hero p.hero-tagline{
+    margin-top: -0.3rem !important;
+  }
+}
