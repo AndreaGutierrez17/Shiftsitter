@@ -24,7 +24,6 @@ body.bg-deep{
 .text-muted-strong{ color: var(--ink-2); }
 
 /* ===== HERO ===== */
-.hero{ min-height:72vh; display:flex; align-items:center; justify-content:center; position:relative; }
 .hero-bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.45; filter:saturate(1) contrast(1.05); }
 .hero-overlay{ display:none !important; } /* sin velo extra */
 
@@ -554,10 +553,6 @@ body, p, .text-muted-strong{ color: var(--ink) !important; }
   text-shadow:0 1px 8px rgba(0,0,0,.35);
 }
 
-/* Asegurar legibilidad sobre la imagen */
-header.hero h1{ text-shadow:0 2px 14px rgba(0,0,0,.25); }
-header.hero .lead,
-header.hero p.text-muted-strong{ text-shadow:0 1px 8px rgba(0,0,0,.35); }
 
 /* Mobile: que el tagline siempre se vea y no rompa */
 @media (max-width: 575.98px){
@@ -597,7 +592,7 @@ header.hero p.text-muted-strong{ text-shadow:0 1px 8px rgba(0,0,0,.35); }
   }
 
   #countdown {
-    margin-top: 10px !important;    /* countdown MÁS ABAJO */
+    margin-top: 150px !important;    /* countdown MÁS ABAJO */
     margin-bottom: 20px !important;
   }
 
@@ -606,8 +601,4 @@ header.hero p.text-muted-strong{ text-shadow:0 1px 8px rgba(0,0,0,.35); }
     min-height: 560px !important;   /* evita el hueco blanco */
   }
 
-  .hero-bg {
-    object-position: center 20% !important;  
-    /* mueve la imagen hacia ARRIBA para mostrar la carita */
-  }
 }
