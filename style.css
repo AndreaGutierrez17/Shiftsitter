@@ -598,7 +598,7 @@ body, p, .text-muted-strong{ color: var(--ink) !important; }
 
   .hero {
     height: auto !important;
-    min-height: 560px !important;   /* evita el hueco blanco */
+    min-height: 560px !important; 
   }
 
 }
@@ -610,11 +610,11 @@ body, p, .text-muted-strong{ color: var(--ink) !important; }
   right:0;
   bottom:0;
   z-index:1080;
-  background:rgba(34,49,75,0.96); /* navy casi sólido */
+  background:rgba(34,49,75,0.96);
   color:#fff;
   padding:10px 14px;
   font-size:0.9rem;
-  box-shadow:0 -4px 18px rgba(0,0,0,0.25);
+  box-shadow:0 -4px 18px rgba(254, 254, 254, 0.25);
 }
 
 .cookie-inner{
@@ -658,4 +658,10 @@ body, p, .text-muted-strong{ color: var(--ink) !important; }
     display:flex;
     justify-content:flex-end;
   }
+}
+
+.cc-window, 
+.cc-message, 
+.cc-btn {
+  color: #ffffff !important;
 }
