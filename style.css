@@ -614,7 +614,7 @@ body, p, .text-muted-strong{ color: var(--ink) !important; }
   color:#fff;
   padding:10px 14px;
   font-size:0.9rem;
-  box-shadow:0 -4px 18px rgba(254, 254, 254, 0.25);
+  box-shadow:0 -4px 18px rgb(254, 254, 254);
 }
 
 .cookie-inner{
@@ -660,8 +660,3 @@ body, p, .text-muted-strong{ color: var(--ink) !important; }
   }
 }
 
-.cc-window, 
-.cc-message, 
-.cc-btn {
-  color: #ffffff !important;
-}
