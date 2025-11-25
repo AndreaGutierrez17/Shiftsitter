@@ -602,3 +602,60 @@ body, p, .text-muted-strong{ color: var(--ink) !important; }
   }
 
 }
+
+/* ===== COOKIE BANNER ===== */
+.cookie-banner{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:1080;
+  background:rgba(34,49,75,0.96); /* navy casi sólido */
+  color:#fff;
+  padding:10px 14px;
+  font-size:0.9rem;
+  box-shadow:0 -4px 18px rgba(0,0,0,0.25);
+}
+
+.cookie-inner{
+  max-width:960px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.cookie-text{
+  margin:0;
+  color:#e5ecff;
+}
+
+.cookie-actions .btn-outline-light{
+  border-color:#e5ecff;
+  color:#e5ecff;
+}
+
+.cookie-actions .btn-outline-light:hover{
+  background:#e5ecff;
+  color:var(--navy);
+}
+
+.cookie-actions .btn-primary{
+  border-radius:999px;
+  font-weight:700;
+}
+
+/* Ajuste en pantallas pequeñas */
+@media (max-width: 576px){
+  .cookie-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .cookie-actions{
+    width:100%;
+    display:flex;
+    justify-content:flex-end;
+  }
+}

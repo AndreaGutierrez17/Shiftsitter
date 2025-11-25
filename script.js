@@ -324,4 +324,43 @@ showCenterSuccess('✅ Thanks! We’ve received your request.');
     });
   });
 
+
+// ===== COOKIE CONSENT =====
+(function(){
+  var banner = document.getElementById('cookieBanner');
+  if (!banner) return;
+
+  var CONSENT_KEY = 'ss_cookie_consent';
+
+  // Si ya decidió antes, no mostramos nada
+  var saved = localStorage.getItem(CONSENT_KEY);
+  if (!saved){
+    banner.classList.remove('d-none');
+  }
+
+  var btnAccept = document.getElementById('cookieAccept');
+  var btnReject = document.getElementById('cookieReject');
+
+  function hideBanner(){
+    banner.classList.add('d-none');
+  }
+
+  if (btnAccept){
+    btnAccept.addEventListener('click', function(){
+      localStorage.setItem(CONSENT_KEY, 'accepted');
+      // 🔹 Aquí en el futuro puedes inicializar Google Analytics, etc.
+      hideBanner();
+    });
+  }
+
+  if (btnReject){
+    btnReject.addEventListener('click', function(){
+      localStorage.setItem(CONSENT_KEY, 'necessary');
+      // No cargamos scripts extra, solo lo necesario del sitio
+      hideBanner();
+    });
+  }
+})();
+
+
 // ========== End ShiftSitter JS ==========
