@@ -598,65 +598,61 @@ body, p, .text-muted-strong{ color: var(--ink) !important; }
 
   .hero {
     height: auto !important;
-    min-height: 560px !important; 
+    min-height: 560px !important;   /* evita el hueco blanco */
   }
 
 }
 
-/* ===== COOKIE BANNER ===== */
-.cookie-banner{
-  position:fixed;
-  left:0;
-  right:0;
-  bottom:0;
-  z-index:1080;
-  background:rgba(34,49,75,0.96);
-  color:#fff;
-  padding:10px 14px;
-  font-size:0.9rem;
-  box-shadow:0 -4px 18px rgb(254, 254, 254);
+/* ===== COOKIE BANNER FIX ===== */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #0f172a; /* azul marino sólido */
+  padding: 18px 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.cookie-inner{
-  max-width:960px;
-  margin:0 auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  flex-wrap:wrap;
+.cookie-inner {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
 }
 
-.cookie-text{
-  margin:0;
-  color:#e5ecff;
+.cookie-text {
+  color: #ffffff !important;
+  font-size: 15px;
+  line-height: 1.4;
 }
 
-.cookie-actions .btn-outline-light{
-  border-color:#e5ecff;
-  color:#e5ecff;
+/* Buttons */
+.cookie-actions .btn {
+  font-size: 14px !important;
+  padding: 8px 16px !important;
 }
 
-.cookie-actions .btn-outline-light:hover{
-  background:#e5ecff;
-  color:var(--navy);
+.cookie-actions .btn-outline-light {
+  border-color: #fff !important;
+  color: #fff !important;
 }
 
-.cookie-actions .btn-primary{
-  border-radius:999px;
-  font-weight:700;
+.cookie-actions .btn-primary {
+  background: #00bfa5 !important;
+  border-color: #00bfa5 !important;
 }
 
-/* Ajuste en pantallas pequeñas */
-@media (max-width: 576px){
-  .cookie-inner{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-  .cookie-actions{
-    width:100%;
-    display:flex;
-    justify-content:flex-end;
+/* Mobile */
+@media (min-width: 768px) {
+  .cookie-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 }
-
