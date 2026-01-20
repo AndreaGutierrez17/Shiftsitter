@@ -19,7 +19,7 @@ if (y) y.textContent = new Date().getFullYear();
 (function () {
   var el = document.getElementById('countdown');
   if (!el) return;
-  var deadline = new Date('2026-02-01T00:00:00');
+  var deadline = new Date('2026-03-01T00:00:00');
   function tick() {
     var now = new Date();
     var diff = deadline - now;
@@ -291,8 +291,7 @@ if (signupForm) {
 
     const payload = formToJSON(this);
     try {
-      // ⬇️ Usa el MISMO endpoint que ya ocupas para el waitlist
-      // Reemplaza URL si tu endpoint es otro:
+      
      const res = await fetch('https://script.google.com/macros/s/AKfycbzEZYYnBNRW--KzDUrAy3SFCXv9uEZh35-LXM3CWtRdrMCnAPQMqXQql49DcDuPjJcj/exec', {
   method: 'POST',
   mode: 'no-cors',
@@ -300,7 +299,7 @@ if (signupForm) {
   body: JSON.stringify(payload)
 });
 
-// Aunque no haya respuesta CORS, asumimos éxito porque Apps Script no lanza errores visibles
+
 document.getElementById('successMsgPartner').classList.remove('d-none');
 this.reset();
 this.classList.remove('was-validated');
@@ -356,7 +355,7 @@ showCenterSuccess('✅ Thanks! We’ve received your request.');
   if (btnReject){
     btnReject.addEventListener('click', function(){
       localStorage.setItem(CONSENT_KEY, 'necessary');
-      // No cargamos scripts extra, solo lo necesario del sitio
+
       hideBanner();
     });
   }
