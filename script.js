@@ -19,7 +19,7 @@ if (y) y.textContent = new Date().getFullYear();
 (function () {
   var el = document.getElementById('countdown');
   if (!el) return;
-  var deadline = new Date('2026-03-01T00:00:00');
+  var deadline = new Date('2026-04-01T00:00:00');
   function tick() {
     var now = new Date();
     var diff = deadline - now;
@@ -360,6 +360,7 @@ showCenterSuccess('✅ Thanks! We’ve received your request.');
     });
   }
 })();
+
 
 
 // ========== End ShiftSitter JS ==========
